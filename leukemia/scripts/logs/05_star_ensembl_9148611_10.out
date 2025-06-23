@@ -1,0 +1,12 @@
+xanadu-52
+Start time: Fri Jun  6 15:32:32 EDT 2025
+	STAR --genomeDir ../../resources/Homo_sapiens.GRCh38/star_index --readFilesIn ../results/01_download/PBMMC_2_3.fastq.gz ../results/01_download/PBMMC_2_2.fastq.gz --runThreadN 10 --soloType CB_UMI_Simple --soloCBwhitelist ../../resources/737K-august-2016.txt --soloUMIlen 10 --readFilesCommand zcat --outFileNamePrefix ../results/04_star_ensembl/PBMMC_2.
+	STAR version: 2.7.11b   compiled: 2024-01-25T16:12:02-05:00 :/home/dobin/data/STAR/STARcode/STAR.master/source
+Jun 06 15:32:32 ..... started STAR run
+Jun 06 15:32:33 ..... loading genome
+Jun 06 15:33:14 ..... started mapping
+Jun 06 16:17:35 ..... finished mapping
+Jun 06 16:17:38 ..... started Solo counting
+Jun 06 16:18:56 ..... finished Solo counting
+Jun 06 16:18:56 ..... finished successfully
+End time: Fri Jun  6 16:19:07 EDT 2025

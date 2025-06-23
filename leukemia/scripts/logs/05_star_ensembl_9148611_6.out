@@ -1,0 +1,11 @@
+xanadu-46
+Start time: Fri Jun  6 15:32:32 EDT 2025
+!!!!! WARNING:  Could not ls ../results/01_download/HHD_2_3.fastq.gz
+
+EXITING: because of fatal INPUT file error: could not open read file: ../results/01_download/HHD_2_3.fastq.gz
+SOLUTION: check that this file exists and has read permision.
+
+Jun 06 15:32:32 ...... FATAL ERROR, exiting
+gzip: ../results/04_star_ensembl/HHD_2.Solo.out/Gene/filtered/*: No such file or directory
+gzip: ../results/04_star_ensembl/HHD_2.Solo.out/Gene/raw/*: No such file or directory
+End time: Fri Jun  6 15:32:32 EDT 2025
