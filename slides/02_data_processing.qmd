@@ -96,15 +96,14 @@ GATTTGGGGTTTAAAGGGTGACCTGGTAGG
 
 ## FASTQ Format {.smaller}
 - Typical raw data format for sequencing reads
-- Contains sequence data and quality scores
 - Typically separated into two or more files
   - One for each end of a read, if paired
   - Technical reads such as barcodes or UMIs
 - Each read is represented by four lines:
-  1. Header line (starts with '@')
-  2. Sequence line (the actual nucleotide sequence)
-  3. Separator line (starts with '+')
-  4. Quality score line (ASCII-encoded quality scores for each nucleotide in the sequence)
+  1. Header (starts with '@')
+  2. Sequence (the actual nucleotide sequence)
+  3. Separator (starts with '+')
+  4. Quality score (ASCII-encoded quality scores for each nucleotide)
 - Example:
 ```
 @SEQ_ID
