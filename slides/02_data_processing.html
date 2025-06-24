@@ -216,6 +216,7 @@ Kerry Cobb
 <section id="dataset" class="slide level2 smaller">
 <h2>Dataset</h2>
 <ul>
+<li><a href="https://doi.org/10.1038/s41598-020-64929-x">Caron et al.&nbsp;2020</a></li>
 <li>Childhood acute lymphoblastic leukemia</li>
 <li>Most common childood cancer</li>
 <li>Precursor B-cell acute lymphoblastic leukemia (B-ALL)
@@ -227,12 +228,12 @@ Kerry Cobb
 <ul>
 <li>~15% of cases</li>
 </ul></li>
-<li>Other patients are refractory or will relapse and succumb</li>
+<li>Some patients are refractory or will relapse and succumb</li>
 <li>Compare 4 B-ALL, 2 T-ALL, and 3 healthy controls</li>
 <li>Cells are Bone Marrow Mononuclear cells (BMMCs)</li>
-<li>Each cell sequenced on a different lane of Illumina
+<li>Each sample sequenced on a different lane of Illumina
 <ul>
-<li>What’s wrong with that?</li>
+<li>Why is that not ideal?</li>
 </ul></li>
 </ul>
 </section>
@@ -263,7 +264,8 @@ Kerry Cobb
 <span id="cb3-2"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/leukemia/results/</span>
 <span id="cb3-3"><a href=""></a><span class="bu">cd</span> ~/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38 </span>
 <span id="cb3-4"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38/Homo_sapiens.GRCh38.114.chr.gtf</span>
-<span id="cb3-5"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa</span>
+<span id="cb3-6"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38/star_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>You would skip this if doing these analyses on your own</li>
 <li>Some of these steps take a long time to run, so we have provided the output data for you to use in the workshop.</li>
@@ -401,13 +403,13 @@ GATTTGGGGTTTAAAGGGTGACCTGGTAGG
 <p>Can occur if insert size is too short</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="img/illumina_sequencing-illumina.jpg" class="nostretch" width="500"></p>
+<p><img data-src="img/illumina_sequencing-illumina.jpg" class="nostretch" width="350"></p>
 <figcaption>Illumina Inc.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="img/adapter_contamination-ecseq.png" class="nostretch"></p>
+<p><img data-src="img/adapter_contamination-ecseq.png" class="nostretch" width="300"></p>
 <figcaption>ECSEQ</figcaption>
 </figure>
 </div>
@@ -436,13 +438,14 @@ GATTTGGGGTTTAAAGGGTGACCTGGTAGG
 <li>Can be done with or without alignment</li>
 <li>Popular tools include:
 <ul>
-<li>Cell Ranger (commercial software from 10x Genomics) [Zheng et al., 2017]</li>
-<li>zUMIs [Parekh et al., 2018]</li>
-<li>alevin [Srivastava et al., 2019]</li>
-<li>RainDrop [Niebler et al., 2020]</li>
-<li>kallisto|bustools [Melsted et al., 2021]</li>
-<li>STARsolo [Kaminow et al., 2021]</li>
-<li>alevin-fry [He et al., 2022]</li>
+<li>Cell Ranger (commercial software from 10x Genomics) <a href="https://doi.org/10.1038/ncomms14049">Zheng et al., 2017</a></li>
+<li>zUMIs (<a href="https://doi.org/10.1093/gigascience/giy059">Parekh et al., 2018</a>)</li>
+<li>alevin (<a href="https://doi.org/10.1186/s13059-019-1670-y">Srivastava et al., 2019</a>)</li>
+<li>RainDrop (<a href="https://doi.org/10.1186/s12859-020-03593-4">Niebler et al., 2020</a>)</li>
+<li>kallisto|bustools (<a href="https://doi.org/10.1038/s41587-021-00870-2">Melsted et al., 2021</a>)</li>
+<li>STARsolo (<a href="https://doi.org/10.1101/2021.05.05.442755">Kaminow et al., 2021</a>)</li>
+<li>alevin-fry (<a href="https://doi.org/10.1038/s41592-022-01408-3">He et al., 2022</a>)</li>
+<li>salmon (<a href="https://doi.org/10.1186/s13059-020-02151-8">Srivastava et al., 2020</a>)</li>
 </ul></li>
 </ul>
 </section>

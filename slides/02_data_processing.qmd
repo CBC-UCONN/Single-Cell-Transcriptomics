@@ -16,6 +16,7 @@ format:
 
 
 ## Dataset {.smaller}
+- [Caron et al. 2020](https://doi.org/10.1038/s41598-020-64929-x)
 - Childhood acute lymphoblastic leukemia
 - Most common childood cancer
 - Precursor B-cell acute lymphoblastic leukemia (B-ALL) 
@@ -23,11 +24,11 @@ format:
   - Good prognosis
 - T-cell acute lymphoblastic leukemia (T-ALL)
   - ~15% of cases
-- Other patients are refractory or will relapse and succumb
+- Some patients are refractory or will relapse and succumb
 - Compare 4 B-ALL, 2 T-ALL, and 3 healthy controls
 - Cells are Bone Marrow Mononuclear cells (BMMCs)
-- Each cell sequenced on a different lane of Illumina
-  - What's wrong with that?
+- Each sample sequenced on a different lane of Illumina
+  - Why is that not ideal?
 
 
 ## Workflow
@@ -58,6 +59,7 @@ ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/leukemia/resu
 cd ~/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38 
 ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38/Homo_sapiens.GRCh38.114.chr.gtf
 ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38/star_index
 ```
 - You would skip this if doing these analyses on your own 
 - Some of these steps take a long time to run, so we have provided the output data for you to use in the workshop.
@@ -166,9 +168,9 @@ The components of the header are:
 ## Adapter Contamination
 Can occur if insert size is too short
 
-![Illumina Inc.](img/illumina_sequencing-illumina.jpg){.nostretch width="500px"}
+![Illumina Inc.](img/illumina_sequencing-illumina.jpg){.nostretch width="350px"}
 
-![ECSEQ](img/adapter_contamination-ecseq.png){.nostretch}
+![ECSEQ](img/adapter_contamination-ecseq.png){.nostretch width="300px"}
 
 
 ## Fastqc
@@ -188,13 +190,14 @@ Can occur if insert size is too short
 - Determination of which part of the genome a read comes from
 - Can be done with or without alignment
 - Popular tools include:
-  - Cell Ranger (commercial software from 10x Genomics) [Zheng et al., 2017]
-  - zUMIs [Parekh et al., 2018]
-  - alevin [Srivastava et al., 2019]
-  - RainDrop [Niebler et al., 2020]
-  - kallisto|bustools [Melsted et al., 2021]
-  - STARsolo [Kaminow et al., 2021]
-  - alevin-fry [He et al., 2022]
+  - Cell Ranger (commercial software from 10x Genomics) [Zheng et al., 2017](https://doi.org/10.1038/ncomms14049)
+  - zUMIs ([Parekh et al., 2018](https://doi.org/10.1093/gigascience/giy059))
+  - alevin ([Srivastava et al., 2019](https://doi.org/10.1186/s13059-019-1670-y))
+  - RainDrop ([Niebler et al., 2020](https://doi.org/10.1186/s12859-020-03593-4))
+  - kallisto|bustools ([Melsted et al., 2021](https://doi.org/10.1038/s41587-021-00870-2))
+  - STARsolo ([Kaminow et al., 2021](https://doi.org/10.1101/2021.05.05.442755 ))
+  - alevin-fry ([He et al., 2022](https://doi.org/10.1038/s41592-022-01408-3))
+  - salmon ([Srivastava et al., 2020](https://doi.org/10.1186/s13059-020-02151-8))
 
 
 ## Mapping & Alignment
