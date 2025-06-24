@@ -2,6 +2,6 @@
 
 ## Slides
 ### Day 1
-[Introduction to Single Cell Transcriptomics](docs/01_introduction.html)
+[Introduction to Single Cell Transcriptomics](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/01_introduction.html)
 
 [Data Processing](docs/02_data_processing.html)
