@@ -1,0 +1,407 @@
+---
+title: "Single Cell Transcriptomics"
+author: "Kerry Cobb"
+format: 
+  revealjs:
+    theme: simple
+    slide-number: true
+    header-includes: |
+      <link href="custom.css" rel="stylesheet">
+---
+
+## Objectives & Learning Goals for Workshop {.smaller}
+- HPC Usage
+- Singe Cell Transcriptome Concepts
+- Technical Details
+
+## Objectives & Learning Goals for Workshop {.smaller}
+- HPC Usage
+  - Accessing remote HPC
+  - Submitting jobs
+  - Basic linux usage
+
+## Objectives & Learning Goals for Workshop {.smaller}
+- Singe Cell Transcriptome Concepts
+  - Sample preparation
+  - Read mapping
+  - Quality control
+  - Analysis
+  
+## Objectives & Learning Goals for Workshop {.smaller}
+- Technical Details
+  - Available software
+  - Scripts to run analyses
+
+
+<!------------------------------------------------------------------>
+## Objectives & Learning Goals for today
+- Introduction to single cell transcriptomics
+- Overview of sample preparation, library construction, and sequencing
+- Initial data processing
+
+
+<!------------------------------------------------------------------>
+## Single Cell Transcriptomics
+- Why do single cell transcriptomics?
+  - Characterize heterogeneity among cells within cell population
+  - Identify rare cell types
+  - Explore interaction and communication among cells
+  - Trace cell lineages during development
+
+
+## Bulk vs Single Cell {.smaller}
+- Bulk transcriptomics
+  - Measures average expression across all cells in a sample
+  - Cannot detect heterogeneity among cells
+  - Higher gene coverage
+
+- Single cell transcriptomics
+  - Measures expression in individual cells
+  - Can detect heterogeneity among cells
+  - Lower gene coverage
+
+<!------------------------------------------------------------------>
+## Single Cell Transcriptomics Workflow {.smaller}
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+1. Tissue preparation
+
+![](img/dissociation-biorender.png){ top=0 height="150"}
+
+:::{.fragment fragment-index=1}
+2. Single cell isolation
+
+![](img/cell-biorender.png){ height="75" fig-align="center"}
+:::
+
+:::{.fragment fragment-index=2}
+3. Library preparation
+
+![](img/library_construct_3'-10x_genomics.png){width="200" fig-align="center"}
+:::
+
+:::
+
+::: {.column width="50%"}
+
+:::{.fragment fragment-index=3}
+4. Sequencing 
+
+![](img/novoseq.png){height="200" fig-align="center"}
+:::
+
+:::{.fragment fragment-index=4}
+5. Data processing & analysis
+
+![](img/matrix.png){height="200" fig-align="center"}
+:::
+
+:::
+::::
+
+
+<!------------------------------------------------------------------>
+## 1. Tissue Preparation {.smaller}
+::::{.columns}
+:::{.column width="50%"}
+
+![](img/dissociation-biorender.png){height=150}
+
+- [Critical Step (Garbage in, garbage out)!]{.fragment .highlight-red}
+- Many different methods
+  - Details beyond the scope of this workshop
+- Cell selction / enrichment
+- Sample clean-up
+:::
+
+:::{.column width="50%"}
+- Considerations for each method w/ regards to analysis 
+  - Expected cells
+  - Quality of cells 
+  - Batch effects
+:::
+::::
+
+<!------------------------------------------------------------------>
+## 1. Tissue Preparation {.smaller}
+- Take steps to remove batch effects & confounding variables
+
+![Baran-Gale et al. 2017](img/confounding-baran-gale_et_al_2017.png){.nostretch width="600px"}
+
+- Consider replication if feasible
+
+
+<!------------------------------------------------------------------>
+## 2. Single Cell Isolation {.smaller}
+![Svensson et al. 2017](img/methods-svensson_2017.png)
+
+
+<!------------------------------------------------------------------>
+## 2. Single Cell Isolation {.smaller}
+![](img/isolation_workflow.png)
+
+Multiple methods broadly categorized:
+
+  1. Emulsion based
+  2. Plate based
+
+::: {.notes}
+Presenter notes here.
+:::
+
+
+<!------------------------------------------------------------------>
+## {.smaller} 
+### Single Cell Isolation - Trade off between cells and genes
+::::{.columns}
+:::{.column width="60%"}
+- Depends on:
+  - Method used
+  - Choices made in implementation of method
+- Required number of cells increases with complexity of sample
+- Sample can often be resequenced
+:::
+:::{.column width="40%"}
+![](img/gene_cell_tradeoff.png)
+:::
+::::
+
+:::{.notes}
+Not all of the library will be used up in most cases
+:::
+
+
+<!------------------------------------------------------------------>
+## Single Cell Isolation - 10X Genomics 
+- By far the most popular approach
+- Source of all workshop data
+
+![](img/chromium-10x_genomics.webp){fig-align="center" width="100px"}
+
+
+<!------------------------------------------------------------------>
+## Single Cell Isolation - 10X Genomics 
+![10X Genomics](img/10x-10x_genomics.gif){.nostretch}
+
+
+<!------------------------------------------------------------------>
+## {.smaller}
+### Single Cell Isolation - Illumina single cell 3’ RNA 
+- Very recent offering
+- Formerly known as PIPSeq
+- Looks very promising, several UConn & UCHC labs planning to adopt
+
+![Clark et al. 2023](img/pipseq-clark_et_al_2023.png)
+
+
+<!------------------------------------------------------------------>
+##
+### Single Cell Isolation - Combinatorial Barcoding
+#### Parse Biosciences Evercode {.center}
+- Cells serve as reacion vessel
+- Serial splitting, barcoding, and pooling results in each cell having a unique combination of barcodes
+- C(96,4) = 3,321,960 
+
+![Tran et al. 2022](img/evercode-tran_et_al_2022.png)
+
+
+<!------------------------------------------------------------------>
+##
+### Single Cell Isolation - Combinatorial Barcoding
+#### Scale Biosciences Quantum Barcoding {.center}
+
+![Scale Biosciences](img/quantum_barcoding-scale_biosciences.png){.nostretch}
+
+
+<!------------------------------------------------------------------>
+## {.smaller}
+### Single Cell Isolation - SMART-SEQ 
+- Plate-based
+- Much greater cost per cell
+- Can assay full transcripts
+
+![Macosko 2020](img/smartseq-macosko_2020.png)
+
+
+<!------------------------------------------------------------------>
+## Single Cell Isolation - Others
+- Honeycomb HIVE
+- Singleron
+- Asteria
+- Fluent
+
+
+<!------------------------------------------------------------------>
+## 3. Library Preparation {.smaller}
+:::: {.columns}
+:::{.column width="50%"}
+1. Convert RNA to cDNA
+   - Reverse transcription
+2. Fragmentation
+2. Barcode ligation
+   - Unique molecular identifiers (UMIs)
+   - Cell barcodes
+3. Sequencing adapter ligation
+4. Amplification
+5. Remove contimating RNA and cell debris
+:::
+:::{.column width="50%"}
+![Illumina](img/flow_cell_oligos-Illumina.png){.nostretch width="500px"}
+:::
+::::
+
+<!------------------------------------------------------------------>
+## 10X Library Preparation {.center}
+:::: {.columns}
+::: {.column width="50%"}
+![](img/droplet_bead.png){.nostretch fig-align="center" width="200px"}
+:::
+::: {.column width="50%"}
+::: {.fragment}
+![](img/droplet_bead_lysed.png){.nostretch fig-align="center" width="200px"}
+:::
+:::
+::::
+
+
+<!------------------------------------------------------------------>
+## 10X RNA Capture
+![Adapted from 10X Genomics](img/capture-adapted-10x_genomics.png)
+
+
+<!------------------------------------------------------------------>
+## 10X 3\` vs 5\` libraries
+![](img/bead_capture_3'-10x_genomics.png){width="500px"}
+
+![](img/bead_capture_5'-10x_genomics.png){width="500px"}
+
+- Refers to the end of an RNA molecule that is sequenced
+- 3\` came first
+- 5\` permits identification of T-cell and B-cell receptor sequence
+- Sensitivity is comparable according to 10X
+
+
+<!------------------------------------------------------------------>
+## 10X 3` Capture
+![10X Genomics](img/capture_3'-10x_genomics.png)
+
+
+<!------------------------------------------------------------------>
+## 10X 5` Capture
+![10X Genomics](img/capture_5'-10x_genomics.png)
+
+
+<!------------------------------------------------------------------>
+## 10X 3' Library construction
+![10X Genomics](img/library_construction_3'-10x_genomics.png)
+
+
+<!------------------------------------------------------------------>
+## 10X 5' Library construction
+![10X Genomics](img/library_construction_5'-10x_genomics.png)
+
+
+<!------------------------------------------------------------------>
+## Constructing Libraries from mRNA
+- 10X is most common
+  - Multiple versions 
+- Other methods exist
+- Method used can have important implications for analysis
+  - Index hopping
+  - PCR duplicates
+  - Biased amplification
+  - Biased capture?
+
+
+<!------------------------------------------------------------------>
+## Unique Molecular Identifiers (UMIs)
+![Adapted from 10X Genomics](img/umi-adapted-10x_genomics.png){.nostretch width="700px"}
+
+- Permit identification of PCR duplicates
+- Results in more accurate estimate of expression
+- 10X Genomics uses a random 12 nt sequence on each oligo
+
+
+<!------------------------------------------------------------------>
+## 4. Sequencing
+::::{.columns}
+:::{.column width="60%"}
+- Typically done with Illumina short reads
+  - Focus of workshop
+- Could be done with any sequencing platform
+  - Each may require special considerations
+    - Read length
+    - Error rate
+    - Technical artifacts/biases
+:::
+
+:::{.column width="40%"}
+![](img/novoseq.png){height="300px"}
+:::
+::::
+
+
+<!------------------------------------------------------------------>
+## Multiplexing samples {.smaller}
+:::: {.columns}
+::: {.column width="60%"}
+- Samples can be multiplexed
+- Two approaches
+  1. Cell labelling
+  2. SNP variation
+- Can reduce impact of batch effects
+- Cell labelling permits overloading
+  - Reduces empty droplets, doublets easy to identify
+:::
+
+::: {.column width="40%"}
+![Stoeckius & Smibert 2018](img/cell_hashing-stoeckius&smibert_2018.png)
+:::
+::::
+
+
+<!------------------------------------------------------------------>
+## Probe capture {.smaller}
+- Generally 
+- RNA captured by hybridization with probes rather than poly A tail
+- Permits sequencing of formalin fixed tissue and low quality tissues
+- Adds additional cost
+- Limited to humans and mice
+
+![10X Genomics](img/probe_capture-10x_genomics.png)
+
+
+<!------------------------------------------------------------------>
+## Single-cell vs Single-nuclei {.smaller}
+::::{.columns}
+:::{.column width="45%"}
+### Single Cell
+![](img/cell.png){.nostretch width="200px"} 
+
+- Can detect transcripts in the cytoplasm as well as the nucleus
+- Typically want to use fresh cells
+- Signal more prone to perturbation caused by tissue processing
+
+:::
+
+:::{.column width="10%"}
+:::
+
+:::{.column width="45%"}
+### Single Nuclei
+![](img/nucleus.png){.nostretch width="200px"} 
+
+- Can detect more unprocessed mRNA containing introns
+- Cannot detect transcripts in the cytoplasm making it unsuitable for some investigations
+- Can be use with preserved cells and difficult to dissociate cells
+
+:::
+::::
+
+
+<!------------------------------------------------------------------>
+## 5. Data Processing
+- Up next!
