@@ -314,7 +314,6 @@ GATTTGGGGTTTAAAGGGTGACCTGGTAGG</code></pre>
 <h2>FASTQ Format</h2>
 <ul>
 <li>Typical raw data format for sequencing reads</li>
-<li>Contains sequence data and quality scores</li>
 <li>Typically separated into two or more files
 <ul>
 <li>One for each end of a read, if paired</li>
@@ -322,10 +321,10 @@ GATTTGGGGTTTAAAGGGTGACCTGGTAGG</code></pre>
 </ul></li>
 <li>Each read is represented by four lines:
 <ol type="1">
-<li>Header line (starts with ‘@’)</li>
-<li>Sequence line (the actual nucleotide sequence)</li>
-<li>Separator line (starts with ‘+’)</li>
-<li>Quality score line (ASCII-encoded quality scores for each nucleotide in the sequence)</li>
+<li>Header (starts with ‘@’)</li>
+<li>Sequence (the actual nucleotide sequence)</li>
+<li>Separator (starts with ‘+’)</li>
+<li>Quality score (ASCII-encoded quality scores for each nucleotide)</li>
 </ol></li>
 <li>Example:</li>
 </ul>
