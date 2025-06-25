@@ -7,9 +7,11 @@
 [Data Processing](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/02_data_processing.html)
 
 
-### Day 2
+### Days 2 & 3
 [Single Cell RNA-Seq Analysis Tools](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/03_tools.html)
 
 [Installing & Configuring Mamba](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/04_mamba.html)
 
-[Single Cell RNA-Seq Analysis](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/05_analysis.html)
+[Starting a Jupyter notebook](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/05_mamba.html)
+
+[Single Cell RNA-Seq Analysis](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/06_analysis.html)
