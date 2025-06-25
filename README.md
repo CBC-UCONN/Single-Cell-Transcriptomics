@@ -12,6 +12,6 @@
 
 [Installing & Configuring Mamba](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/04_mamba.html)
 
-[Starting a Jupyter notebook](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/05_mamba.html)
+[Starting a Jupyter notebook](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/05_jupyter_notebook.html)
 
 [Single Cell RNA-Seq Analysis](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/06_analysis.html)
