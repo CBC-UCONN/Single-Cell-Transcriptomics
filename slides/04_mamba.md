@@ -38,7 +38,9 @@ mamba activate single-cell
 ```
 mamba install -c conda-forge -c bioconda jupyter numpy"<2" scanpy \
 python-igraph leidenalg seaborn scipy scikit-image scikit-misc bbknn \
-celltypist rpy2 anndata2ri=1.1 r-soupx bioconda::bioconductor-scater \ bioconda::bioconductor-scdblfinder bioconda::bioconductor-scry 
+celltypist rpy2 anndata2ri=1.1 r-soupx bioconda::bioconductor-scater \ bioconda::bioconductor-scdblfinder bioconda::bioconductor-scry bioconda::bioconductor-scran 
+
+mamba install rpy2=3.5.1
 
 pip install scarches
 ```

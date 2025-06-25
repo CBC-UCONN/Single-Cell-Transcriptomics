@@ -144,11 +144,27 @@ Kerry Cobb
 <ol type="1">
 <li>Quality control</li>
 <li>Normalization</li>
+<li>Feature selection</li>
 <li>Dimensionality reduction</li>
-<li>Clustering</li>
 <li>Integration</li>
+<li>Clustering</li>
 <li>Annotation</li>
 </ol>
+</section>
+<section id="steps-1" class="slide level2">
+<h2>Steps</h2>
+<ol type="1">
+<li>Quality control</li>
+<li>Normalization</li>
+<li>Feature selection</li>
+<li>Dimensionality reduction</li>
+<li>Integration</li>
+<li>Clustering</li>
+<li>Annotation</li>
+</ol>
+<ul>
+<li>Not necessarily a linear process</li>
+</ul>
 </section>
 <section id="quality-control" class="slide level2 smaller">
 <h2>Quality Control</h2>
@@ -254,7 +270,7 @@ Kerry Cobb
 </ul></li>
 </ul>
 </section>
-<section id="quality-control-5" class="slide level2">
+<section id="quality-control-5" class="slide level2 smaller">
 <h2>Quality Control</h2>
 <ul>
 <li>Best to be as permissive as possible
@@ -290,10 +306,11 @@ Kerry Cobb
 <li>Can be corrected for using tools like <code>SoupX</code>
 <ul>
 <li>These tools use the expression profiles of empty droplets to estimate the ambient RNA profile</li>
-<li>They then subtract this profile from the expression data of each cell <img data-src="img/droplet_ambient-biorender.png" width="200"></li>
+<li>They then subtract this profile from the expression data of each cell</li>
 </ul></li>
 </ul>
-</section>
+
+<img data-src="img/droplet_ambient-biorender.png" width="200" class="r-stretch"></section>
 <section id="normalization" class="slide level2 smaller">
 <h2>Normalization</h2>
 <ul>
@@ -329,7 +346,7 @@ Kerry Cobb
 <li>Different techniques are better suited to different downstream analyses</li>
 </ul>
 </section>
-<section id="normalization---techniques" class="slide level2">
+<section id="normalization---techniques" class="slide level2 smaller">
 <h2>Normalization - Techniques</h2>
 <ul>
 <li>Shifted logarithm
@@ -344,19 +361,155 @@ Kerry Cobb
 <li>Analytic Pearson residuals</li>
 </ul>
 </section>
-<section id="feature-selection" class="slide level2">
+<section id="feature-selection" class="slide level2 smaller">
 <h2>Feature Selection</h2>
-
-<img data-src="img/feature_selection-luecken_theis_2019.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Luecken &amp; Theis, 2019</p></section>
-<section id="dimensionality-reduction" class="slide level2">
-<h2>Dimensionality Reduction</h2>
-
-<img data-src="img/dimensionality_reduction-luecken_theis_2019.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Luecken &amp; Theis, 2019</p></section>
-<section id="integration" class="slide level2">
-<h2>Integration</h2>
+<ul>
+<li>Many genes are not informative for downstream analysis</li>
+<li>We want to:
+<ul>
+<li>Select gene that captue biologically meaningful variation</li>
+<li>Reduce the number of genes that only contribute noise</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/feature_selection-luecken_theis_2019.jpeg" class="" width="800"></p>
+<figcaption>Luecken &amp; Theis, 2019</figcaption>
+</figure>
+</div>
 </section>
-<section id="annotation" class="slide level2">
+<section id="dimensionality-reduction" class="slide level2 smaller">
+<h2>Dimensionality Reduction</h2>
+<ul>
+<li>scRNAseq data suffers from the “curse of dimensionality”
+<ul>
+<li>The data have a high number of dimensions (genes)</li>
+<li>Data contains more noise and redundancy
+<ul>
+<li>Added dimensions do not add more information</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="dimensionality-reduction-1" class="slide level2 smaller">
+<h2>Dimensionality Reduction</h2>
+<ul>
+<li>We already reduced the dimensionality of the data by selecting a subset of genes</li>
+<li>We can reduce it further with dimensionality reduction algorithms</li>
+</ul>
+
+<img data-src="img/dimensionality_reduction-luecken_theis_2019.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Luecken &amp; Theis, 2019</p><ul>
+<li>The most popular:
+<ul>
+<li>Principal Component Analysis (PCA)</li>
+<li>t-distributed Stochastic Neighbor Embedding (t-SNE)</li>
+<li>Uniform Manifold Approximation and Projection (UMAP)</li>
+</ul></li>
+</ul>
+</section>
+<section id="principal-component-analysis-pca" class="slide level2 smaller">
+<h2>Principal Component Analysis (PCA)</h2>
+<ul>
+<li>PCA creates new set of uncorrelated variables (principal components) that capture the most variance in the data</li>
+<li>The first principal component captures the most variance, the second captures the second most, and so on</li>
+<li>We can select the top principal components to use for downstream analysis</li>
+<li>Highly efficient and easy to interpret</li>
+<li>Not ideal for visualization</li>
+</ul>
+</section>
+<section id="t-distributed-stochastic-neighbor-embedding-t-sne" class="slide level2 smaller">
+<h2>t-distributed Stochastic Neighbor Embedding (t-SNE)</h2>
+<ul>
+<li>Graph based, non-linear dimensionality reduction technique</li>
+<li>Only local distances are preserved</li>
+<li>Stochastic, so results can vary between runs</li>
+<li>Good for visualizing clusters in high-dimensional data</li>
+<li>See <a href="https://youtu.be/NEaUSP4YerM">StatQuest Video</a> for a great explanation</li>
+</ul>
+</section>
+<section id="uniform-manifold-approximation-and-projection-umap" class="slide level2 smaller">
+<h2>Uniform Manifold Approximation and Projection (UMAP)</h2>
+<ul>
+<li>Graph based, non-linear dimensionality reduction technique</li>
+<li>Similar in principle to t-SNE</li>
+<li>Uses principal components to create a graph</li>
+<li>Preserves both local and global structure</li>
+</ul>
+</section>
+<section id="integration" class="slide level2 smaller">
+<h2>Integration</h2>
+<ul>
+<li>Batch effects are a major challenge in scRNA-seq data analysis
+<ul>
+<li>Arise from processing cells in separate batches
+<ul>
+<li>Such as individual sample</li>
+</ul></li>
+<li>Obscure biological realities</li>
+</ul></li>
+<li>Removing batch effects is essential for analyses utlizing multiple batches</li>
+</ul>
+
+<img data-src="img/batch_effect-10x.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">10X Genomics</p></section>
+<section id="integration-1" class="slide level2 smaller">
+<h2>Integration</h2>
+
+<img data-src="img/integration-luecken_theis_2019.jpeg" width="750" class="r-stretch quarto-figure-center"><p class="caption">Luecken &amp; Theis, 2019</p></section>
+<section id="clustering" class="slide level2">
+<h2>Clustering</h2>
+<ul>
+<li>Clustering is the process of grouping cells based on their expression profiles</li>
+<li>Common clustering algorithms:
+<ul>
+<li>K-means</li>
+<li>Hierarchical clustering</li>
+<li>Louvain clustering</li>
+</ul></li>
+<li>Louvain clustering is the most popular for scRNA-seq data
+<ul>
+<li>Can be used with UMAP or t-SNE for visualization</li>
+</ul></li>
+</ul>
+</section>
+<section id="clustering-1" class="slide level2">
+<h2>Clustering</h2>
+<ul>
+<li>Keep in mind:
+<ul>
+<li>Clustering is an approximation of the underlying biological reality</li>
+<li>Different levels can be appropriate for different questions
+<ul>
+<li>There may not be a single “correct” clustering</li>
+</ul></li>
+<li>Clustering algorithm will create as many cluster as you ask it to</li>
+<li>Don’t overlook continuous variation</li>
+</ul></li>
+</ul>
+</section>
+<section id="annotation" class="slide level2 smaller">
 <h2>Annotation</h2>
+<ul>
+<li>Assigning cell types to clusters</li>
+<li>Can be done using:
+<ul>
+<li>Marker genes</li>
+<li>Reference datasets</li>
+<li>Automated annotation tools</li>
+</ul></li>
+<li>Marker genes are genes that are specifically expressed in a particular cell type</li>
+<li>Reference datasets are datasets that have already been annotated</li>
+</ul>
+</section>
+<section id="steps-2" class="slide level2">
+<h2>Steps</h2>
+<ol type="1">
+<li>Quality control</li>
+<li>Normalization</li>
+<li>Dimensionality reduction</li>
+<li>Clustering</li>
+<li>Integration</li>
+<li>Annotation</li>
+</ol>
 
 </section>
     </div>
