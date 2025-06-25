@@ -19,7 +19,7 @@ You must be connected to the CAM VPN to access the Jupyter server since it must 
 Instructions on downloading and runing the CAM VPN client can be found at https://health.uconn.edu/high-performance-computing/tutorials/cam-vpn.
 
 
-## 3. Retreive ssh command
+## 3. Obtain ssh tunneling command
 Obtain the ssh command to connect to your Jupyter server from the `jupyter-notebook_<job id>.out` file.
 
 Two easy ways to view the file would be to use `cat jupyter-notebook_<job id>.out` or `nano jupyter-notebook_<job id>.out`.

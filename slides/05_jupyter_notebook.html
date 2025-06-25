@@ -99,8 +99,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You must be connected to the CAM VPN to access the Jupyter server since it must be accessed via an SSH tunnel through the xanadu-submit-ext.cam.uchc.edu node.</p>
 <p>Instructions on downloading and runing the CAM VPN client can be found at https://health.uconn.edu/high-performance-computing/tutorials/cam-vpn.</p>
 </section>
-<section id="retreive-ssh-command" class="level2">
-<h2 class="anchored" data-anchor-id="retreive-ssh-command">3. Retreive ssh command</h2>
+<section id="obtain-ssh-tunneling-command" class="level2">
+<h2 class="anchored" data-anchor-id="obtain-ssh-tunneling-command">3. Obtain ssh tunneling command</h2>
 <p>Obtain the ssh command to connect to your Jupyter server from the <code>jupyter-notebook_&lt;job id&gt;.out</code> file.</p>
 <p>Two easy ways to view the file would be to use <code>cat jupyter-notebook_&lt;job id&gt;.out</code> or <code>nano jupyter-notebook_&lt;job id&gt;.out</code>.</p>
 <p>Copy the line just below <code>Command to create ssh tunnel:</code>.</p>
