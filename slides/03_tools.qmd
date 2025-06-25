@@ -37,7 +37,8 @@ format:
 
 ## Python vs R
 - Higher rate of growth of Python packages for single cell analysis 
-![Zappia & Theis 2021](img/py_v_r-zappia%26theis_2021.png
+
+![Zappia & Theis 2021](img/py_v_r-zappia_theis_2021.png)
 
 
 ## Python vs R {.smaller}
@@ -78,4 +79,4 @@ sbatch jupyter.sh <mamba env>
 ```
 
 ## anndata
-![Virshup et al. 2024](img/anndata-virshup_et_al_2024.svg)
+![Virshup et al. 2024](img/anndata-virshup_et_al_2024.png)
