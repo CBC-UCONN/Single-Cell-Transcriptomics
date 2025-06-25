@@ -1,0 +1,188 @@
+---
+title: "Single Cell RNAseq Analysis"
+author: "Kerry Cobb"
+format: 
+  revealjs:
+    theme: simple
+    slide-number: true
+    header-includes: |
+      <link href="custom.css" rel="stylesheet">
+---
+
+
+
+## Steps
+1. Quality control
+2. Normalization
+3. Dimensionality reduction
+4. Clustering
+5. Integration
+7. Annotation 
+
+
+## Quality Control {.smaller}
+::::{.columns}
+::: {.column width="50%"}
+- **Filter empty droplets**
+- Filter droplets with multiple cells
+- Remove low quality cells
+  - Cells with high mitochondrial gene counts
+    - Suggests cell death or damage
+- Filter cells with low gene counts
+- Filter genes expressed in few cells
+:::
+::: {.column width="50%"}
+![](img/empty_droplet-biorender.png){width="200px"}
+:::
+::::
+
+
+## Quality Control {.smaller}
+::::{.columns}
+::: {.column width="50%"}
+- **Filter empty droplets**
+- Filter droplets with multiple cells
+- Remove low quality cells
+  - Cells with high mitochondrial gene counts
+    - Suggests cell death or damage
+- Filter cells with low gene counts
+- Filter genes expressed in few cells
+:::
+::: {.column width="50%"}
+![](img/droplet_ambient-biorender.png){width="200px"}
+:::
+::::
+
+
+## Quality Control {.smaller}
+::::{.columns}
+::: {.column width="50%"}
+- Filter empty droplets
+- **Filter droplets with multiple cells**
+- Remove low quality cells
+  - Cells with high mitochondrial gene counts
+    - Suggests cell death or damage
+- Filter cells with low gene counts
+- Filter genes expressed in few cells
+:::
+::: {.column width="50%"}
+![](img/doublet-biorender.png){width="200px"}
+:::
+::::
+
+
+## Quality Control {.smaller}
+::::{.columns}
+::: {.column width="50%"}
+- Filter empty droplets
+- Filter droplets with multiple cells
+- Remove low quality cells
+  - Cells with high mitochondrial gene counts
+    - Suggests cell death or damage
+- Filter cells with low gene counts
+- Filter genes expressed in few cells
+:::
+::: {.column width="50%"}
+![](img/ruptered_cell.png)
+:::
+::::
+
+
+## Quality Control{.smaller}
+- Can set hard filtering thresholds
+  - These end up being arbitrary as there is rarely a clear boundary 
+  - Time intensive
+    - Doesn't scale well with large datasets
+- Median Absolute Deviation (MAD) based filtering
+  - Uses the distribution of QC metrics to set thresholds
+  - More robust to outliers
+  - Can be automated
+  - *MAD = median(|x - median(x)|)*, where *x* is the QC metric
+
+
+## Quality Control
+- Best to be as permissive as possible
+  - Don't want to filter out real cells
+- Can always filter more later
+- Iterative and data driven approach is best
+  - But beware of [The garden of forking paths](https://sites.stat.columbia.edu/gelman/research/unpublished/p_hacking.pdf)
+    - Why multiple comparisons can be a problem, even when there is no “fishing expedition” or “p-hacking”
+    - Be careful with your conclusions
+
+
+## Doublet Detection
+- Can be filtered out using tools like the `scDblFinder` R package or `Scrublet` Python package
+
+![](img/doublet-biorender.png){.nostretch width="200px"}
+
+
+## Correction of ambient RNA {.smaller}
+- RNA in the environment of the cell
+  - Can be from dead cells, lysed cells, or other sources
+- Potentially a significant source of noise in single cell RNAseq data
+- Can be corrected for using tools like `SoupX`
+  - These tools use the expression profiles of empty droplets to estimate the ambient RNA profile
+  - They then subtract this profile from the expression data of each cell
+![](img/droplet_ambient-biorender.png){width="200px"}
+
+
+## Normalization {.smaller}
+- Each step of single cell workflow introduces a degree of variablity
+  - Capture of cells and mRNA molecules
+  - Reverse transcription
+  - Amplification
+  - Sequencing
+- Count matrix contains widely varying variance terms
+- Statistical methods assume uniform variance
+
+
+## Normalization - Depth bias {.smaller}
+- Two genes: A & B
+- Two cell types: Blue & Green
+- Normalize by dividing UMI counts for each gene by total 
+
+![Cambridge Institute](img/depth_bias-cambridge_institute.png)
+
+- There is not differential expression, only a difference in sequencing depth
+
+
+## Normalization {.smaller}
+- Normalization adjusts the raw counts by scaling to a speciied range.
+- Reduces technical differences so that differences between are primarily biological
+- See [Ahlmann-Eltze et al. 2020](https://doi.org/10.1038/s41592-023-01814-1) for review & benchmarking of normalization methods
+- Different techniques are better suited to different downstream analyses
+
+
+## Normalization - Techniques
+- Shifted logarithm
+  - Works well for dimensionality reduction and differential expression
+- Scran's pooling-based size factor estimation method
+  - Works well or batch correction  
+- Analytic Pearson residuals
+
+
+
+
+## Feature Selection
+
+
+
+## Dimensionality Reduction
+
+
+
+## Integration
+
+
+
+## Annotation
+
+
+
+## Dimensionality Reduction
+![Luecken & Theis, 2019](img/dimensionality_reduction-luecken_theis_2019.jpeg)
+
+
+
+## Feature Selection
+![Luecken & Theis, 2019](img/feature_selection-luecken_theis_2019.jpeg)

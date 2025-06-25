@@ -26,7 +26,7 @@ format:
   - ~15% of cases
 - Some patients are refractory or will relapse and succumb
 - Compare 4 B-ALL, 2 T-ALL, and 3 healthy controls
-- Cells are Bone Marrow Mononuclear cells (BMMCs)
+- Cells are bone marrow mononuclear cells (BMMCs)
 - Each sample sequenced on a different lane of Illumina
   - Why is that not ideal?
 

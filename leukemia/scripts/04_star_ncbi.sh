@@ -24,7 +24,7 @@ sample=$( awk "NR==${SLURM_ARRAY_TASK_ID}+1" $metadata | cut -d, -f2 )
 STAR \
   --genomeDir ../../resources/GRCh38.p14/star_index \
   --readFilesIn ${indir}/${sample}_3.fastq.gz ${indir}/${sample}_2.fastq.gz \
-  --runThreadN 10 \
+  --runThreadN 8 \
   --soloType CB_UMI_Simple \
   --soloCBwhitelist ../../resources/737K-august-2016.txt \
   --soloUMIlen 10 \
