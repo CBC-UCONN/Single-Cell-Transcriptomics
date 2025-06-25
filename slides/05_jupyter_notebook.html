@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>mamba</title>
+<title>jupyter_notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,17 +58,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="04_mamba_files/libs/clipboard/clipboard.min.js"></script>
-<script src="04_mamba_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="04_mamba_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="04_mamba_files/libs/quarto-html/popper.min.js"></script>
-<script src="04_mamba_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="04_mamba_files/libs/quarto-html/anchor.min.js"></script>
-<link href="04_mamba_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="04_mamba_files/libs/quarto-html/quarto-syntax-highlighting-226bd0f977fa82dfae4534cac220d79a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="04_mamba_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="04_mamba_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="04_mamba_files/libs/bootstrap/bootstrap-be9206a58a27969b3ea3001da8f26fef.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="05_jupyter_notebook_files/libs/clipboard/clipboard.min.js"></script>
+<script src="05_jupyter_notebook_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="05_jupyter_notebook_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="05_jupyter_notebook_files/libs/quarto-html/popper.min.js"></script>
+<script src="05_jupyter_notebook_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="05_jupyter_notebook_files/libs/quarto-html/anchor.min.js"></script>
+<link href="05_jupyter_notebook_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="05_jupyter_notebook_files/libs/quarto-html/quarto-syntax-highlighting-226bd0f977fa82dfae4534cac220d79a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="05_jupyter_notebook_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="05_jupyter_notebook_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="05_jupyter_notebook_files/libs/bootstrap/bootstrap-be9206a58a27969b3ea3001da8f26fef.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -82,42 +82,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="start-interactive-session" class="level1">
-<h1>Start interactive session</h1>
-<pre><code>srun --partition=mcbstudent --qos=mcbstudent --mem=16GB --pty bash</code></pre>
+<section id="using-jupyter-notebooks-on-hpc" class="level1">
+<h1>Using Jupyter Notebooks on HPC</h1>
+<section id="start-jupyter-server" class="level2">
+<h2 class="anchored" data-anchor-id="start-jupyter-server">1. Start Jupyter server</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> sbatch jupyter.sh <span class="op">&lt;</span>mamba env<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Replace <mamba env=""> with the name of the mamba/conda environment you want to use.</mamba></p>
 </section>
-<section id="download-miniforge-installer" class="level1">
-<h1>Download miniforge installer</h1>
-<pre><code>wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</code></pre>
+<section id="checking-that-job-is-running" class="level2">
+<h2 class="anchored" data-anchor-id="checking-that-job-is-running">Checking that job is running</h2>
+<p>At any time, you can check the status of your Jupyter server job by running:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="op">&lt;</span>username<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="install-miniforge" class="level1">
-<h1>Install miniforge</h1>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> Miniforge3.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li>Agree to license terms (yes)</li>
-<li>Choose installation path (default is fine)</li>
-<li>Choose whether to initialize mamba (select “yes”)</li>
-</ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="connect-to-the-cam-vpn" class="level2">
+<h2 class="anchored" data-anchor-id="connect-to-the-cam-vpn">2. Connect to the CAM VPN</h2>
+<p>You must be connected to the CAM VPN to access the Jupyter server since it must be accessed via an SSH tunnel through the xanadu-submit-ext.cam.uchc.edu node.</p>
+<p>Instructions on downloading and runing the CAM VPN client can be found at https://health.uconn.edu/high-performance-computing/tutorials/cam-vpn.</p>
 </section>
-<section id="create-environment" class="level1">
-<h1>Create environment</h1>
-<pre><code>mamba create -n single-cell python=3.11</code></pre>
-<ol type="1">
-<li>Confirm changes (y)</li>
-</ol>
+<section id="retreive-ssh-command" class="level2">
+<h2 class="anchored" data-anchor-id="retreive-ssh-command">3. Retreive ssh command</h2>
+<p>Obtain the ssh command to connect to your Jupyter server from the <code>jupyter-notebook_&lt;job id&gt;.out</code> file.</p>
+<p>Two easy ways to view the file would be to use <code>cat jupyter-notebook_&lt;job id&gt;.out</code> or <code>nano jupyter-notebook_&lt;job id&gt;.out</code>.</p>
+<p>Copy the line just below <code>Command to create ssh tunnel:</code>.</p>
+<p>Paste this command into a new terminal window to create an SSH tunnel to the Jupyter server. You should not log into the cluster in this terminal window. This command must be run from your local machine.</p>
+<p>Enter your password when prompted.</p>
+<p>If successful, you will not see any output in the terminal window after entering your password.</p>
+<p>Leave this terminal window open while you use Jupyter.</p>
 </section>
-<section id="activate-environment" class="level1">
-<h1>Activate environment</h1>
-<pre><code>mamba activate single-cell</code></pre>
+<section id="retreive-jupyter-url" class="level2">
+<h2 class="anchored" data-anchor-id="retreive-jupyter-url">4. Retreive Jupyter URL</h2>
+<p>Obtain the URL for accessing the Jupyter notebook in the <code>jupyter-notebook_&lt;job id&gt;.out</code> file.</p>
+<p>This command is located just below the line <code>Use a Browser on your local machine to go to:</code></p>
+<p>Copy this URL and paste it into your web browser.</p>
+<p>You should now see the Jupyter notebook interface.</p>
 </section>
-<section id="install-dependencies" class="level1">
-<h1>Install dependencies</h1>
-<pre><code>mamba install -c conda-forge -c bioconda jupyter numpy"&lt;2" scanpy \
-python-igraph leidenalg seaborn scipy scikit-image scikit-misc bbknn \
-celltypist rpy2 anndata2ri=1.1 r-soupx bioconda::bioconductor-scater \ bioconda::bioconductor-scdblfinder bioconda::bioconductor-scry 
-
-pip install scarches</code></pre>
 </section>
 
 </main>

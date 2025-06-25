@@ -1,0 +1,47 @@
+# Using Jupyter Notebooks on HPC
+
+## 1. Start Jupyter server
+```bash
+bash sbatch jupyter.sh <mamba env>
+```
+
+Replace <mamba env> with the name of the mamba/conda environment you want to use.
+
+## Checking that job is running
+At any time, you can check the status of your Jupyter server job by running:
+```bash
+squeue -u <username>
+```
+
+## 2. Connect to the CAM VPN
+You must be connected to the CAM VPN to access the Jupyter server since it must be accessed via an SSH tunnel through the xanadu-submit-ext.cam.uchc.edu node.
+
+Instructions on downloading and runing the CAM VPN client can be found at https://health.uconn.edu/high-performance-computing/tutorials/cam-vpn.
+
+
+## 3. Retreive ssh command
+Obtain the ssh command to connect to your Jupyter server from the `jupyter-notebook_<job id>.out` file.
+
+Two easy ways to view the file would be to use `cat jupyter-notebook_<job id>.out` or `nano jupyter-notebook_<job id>.out`.
+
+Copy the line just below `Command to create ssh tunnel:`.
+
+Paste this command into a new terminal window to create an SSH tunnel to the Jupyter server. You should not log into the cluster in this terminal window. This command must be run from your local machine.
+
+Enter your password when prompted.
+
+If successful, you will not see any output in the terminal window after entering your password.
+
+Leave this terminal window open while you use Jupyter.
+
+
+## 4. Retreive Jupyter URL
+Obtain the URL for accessing the Jupyter notebook in the `jupyter-notebook_<job id>.out` file.
+
+This command is located just below the line `Use a Browser on your local machine to go to:`
+
+Copy this URL and paste it into your web browser.
+
+You should now see the Jupyter notebook interface.
+
+

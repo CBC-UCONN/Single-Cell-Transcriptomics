@@ -79,4 +79,4 @@ sbatch jupyter.sh <mamba env>
 ```
 
 ## anndata
-![Virshup et al. 2024](img/anndata-virshup_et_al_2024.png)
+![](img/anndata.png)
