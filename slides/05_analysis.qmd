@@ -161,13 +161,12 @@ format:
 - Analytic Pearson residuals
 
 
-
-
 ## Feature Selection
-
+![Luecken & Theis, 2019](img/feature_selection-luecken_theis_2019.jpeg)
 
 
 ## Dimensionality Reduction
+![Luecken & Theis, 2019](img/dimensionality_reduction-luecken_theis_2019.jpeg)
 
 
 
@@ -179,10 +178,6 @@ format:
 
 
 
-## Dimensionality Reduction
-![Luecken & Theis, 2019](img/dimensionality_reduction-luecken_theis_2019.jpeg)
 
 
 
-## Feature Selection
-![Luecken & Theis, 2019](img/feature_selection-luecken_theis_2019.jpeg)
