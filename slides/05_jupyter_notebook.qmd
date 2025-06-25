@@ -2,7 +2,7 @@
 
 ## 1. Start Jupyter server
 ```bash
-bash sbatch jupyter.sh <mamba env>
+sbatch jupyter.sh <mamba env>
 ```
 
 Replace <mamba env> with the name of the mamba/conda environment you want to use.
