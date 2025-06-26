@@ -340,7 +340,7 @@ Kerry Cobb
 <section id="normalization-1" class="slide level2 smaller">
 <h2>Normalization</h2>
 <ul>
-<li>Normalization adjusts the raw counts by scaling to a speciied range.</li>
+<li>Normalization adjusts the raw counts by scaling to a specified range.</li>
 <li>Reduces technical differences so that differences between are primarily biological</li>
 <li>See <a href="https://doi.org/10.1038/s41592-023-01814-1">Ahlmann-Eltze et al.&nbsp;2020</a> for review &amp; benchmarking of normalization methods</li>
 <li>Different techniques are better suited to different downstream analyses</li>
@@ -455,7 +455,7 @@ Kerry Cobb
 <h2>Integration</h2>
 
 <img data-src="img/integration-luecken_theis_2019.jpeg" width="750" class="r-stretch quarto-figure-center"><p class="caption">Luecken &amp; Theis, 2019</p></section>
-<section id="clustering" class="slide level2">
+<section id="clustering" class="slide level2 smaller">
 <h2>Clustering</h2>
 <ul>
 <li>Clustering is the process of grouping cells based on their expression profiles</li>
@@ -464,11 +464,15 @@ Kerry Cobb
 <li>K-means</li>
 <li>Hierarchical clustering</li>
 <li>Louvain clustering</li>
+<li>Leiden clustering</li>
 </ul></li>
-<li>Louvain clustering is the most popular for scRNA-seq data
+<li>Louvain clustering was very popular for scRNA-seq data</li>
+<li>Leiden is now the preferred algorithm
 <ul>
-<li>Can be used with UMAP or t-SNE for visualization</li>
+<li>More robust to noise and outliers</li>
+<li>Better at detecting small clusters</li>
 </ul></li>
+<li>Clusters can be visualized with UMAP or t-SNE</li>
 </ul>
 </section>
 <section id="clustering-1" class="slide level2">

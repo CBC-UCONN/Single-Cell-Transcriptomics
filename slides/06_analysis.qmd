@@ -161,7 +161,7 @@ format:
 
 
 ## Normalization {.smaller}
-- Normalization adjusts the raw counts by scaling to a speciied range.
+- Normalization adjusts the raw counts by scaling to a specified range.
 - Reduces technical differences so that differences between are primarily biological
 - See [Ahlmann-Eltze et al. 2020](https://doi.org/10.1038/s41592-023-01814-1) for review & benchmarking of normalization methods
 - Different techniques are better suited to different downstream analyses
@@ -241,15 +241,18 @@ format:
 ![Luecken & Theis, 2019](img/integration-luecken_theis_2019.jpeg){width="750px"}
 
 
-
-## Clustering
+## Clustering {.smaller}
 - Clustering is the process of grouping cells based on their expression profiles
 - Common clustering algorithms:
   - K-means
   - Hierarchical clustering
   - Louvain clustering
-- Louvain clustering is the most popular for scRNA-seq data 
-  - Can be used with UMAP or t-SNE for visualization
+  - Leiden clustering
+- Louvain clustering was very popular for scRNA-seq data 
+- Leiden is now the preferred algorithm
+  - More robust to noise and outliers
+  - Better at detecting small clusters
+- Clusters can be visualized with UMAP or t-SNE
 
 
 ## Clustering

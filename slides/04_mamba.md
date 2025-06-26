@@ -49,12 +49,9 @@ Once an environment is activated, you can install packages. The following comman
 ```
 mamba install -c conda-forge -c bioconda jupyter numpy"<2" scanpy \
   python-igraph leidenalg seaborn scipy scikit-image scikit-misc bbknn \
-  celltypist rpy2 anndata2ri=1.1 r-soupx bioconda::bioconductor-scater \ 
-  bioconda::bioconductor-scdblfinder bioconda::bioconductor-scry 
+  celltypist rpy2 anndata2ri=1.1 r-irkernel bioconda::r-sceasy r-soupx \
+  bioconda::bioconductor-scater bioconda::bioconductor-scdblfinder bioconda::bioconductor-scry 
 
-mamba install r-irkernel bioconda::r-sceasy 
-
-pip install scarches
 ```
 
 
