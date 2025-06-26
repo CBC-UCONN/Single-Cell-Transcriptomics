@@ -52,6 +52,10 @@ mamba install -c conda-forge -c bioconda jupyter numpy"<2" scanpy \
   celltypist rpy2 anndata2ri=1.1 r-soupx bioconda::bioconductor-scater \ 
   bioconda::bioconductor-scdblfinder bioconda::bioconductor-scry 
 
+mamba install r-irkernel bioconda::r-sceasy 
+
 pip install scarches
 ```
+
+
  
