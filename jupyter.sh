@@ -3,7 +3,7 @@
 #SBATCH --partition mcbstudent 
 #SBATCH --qos mcbstudent
 #SBATCH -c 1
-#SBATCH --mem=4gb
+#SBATCH --mem=32gb
 #SBATCH -t 0-6:00:00
 #SBATCH -o %x_%j.out
 
