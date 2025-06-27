@@ -18,11 +18,20 @@
 
 
 ## Getting Workshop Code
-To get the code for the workshop, you can clone the repository using the following command:
+Code for the workshop can be downloaded from https://github.com/CBC-UCONN/Genome_Assembly/releases.
+
+Copy the url for the version you wish to download and use `wget` or `curl` to download it.
+
+To download the most recent version:
 
 ```bash
-git clone https://github.com/CBC-UCONN/Single-Cell-Transcriptomics.git
+wget wget https://github.com/CBC-UCONN/Genome_Assembly/archive/refs/tags/2025.06.zip
 ```
+One downloaded, unzip the file:
+
+```bash
+unzip 2025.06.zip
+``` 
 
 If you do not wish to run the entire pipeline (scripts 01-05), you will need to create symlinks to the pre-existing results files.
 

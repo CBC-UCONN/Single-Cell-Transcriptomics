@@ -84,40 +84,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="start-interactive-session" class="level1">
 <h1>Start interactive session</h1>
+<p>Do this anytime you want to create a Mamba environment or install packages. These tasks are resource-intensive and should not be done on the login node.</p>
 <pre><code>srun --partition=mcbstudent --qos=mcbstudent --mem=16GB --pty bash</code></pre>
 </section>
-<section id="download-miniforge-installer" class="level1">
-<h1>Download miniforge installer</h1>
-<pre><code>wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</code></pre>
+<section id="install-mamba" class="level1">
+<h1>Install Mamba</h1>
+<p>These steps only need to be done once.</p>
+<section id="download-miniforge-installer" class="level2">
+<h2 class="anchored" data-anchor-id="download-miniforge-installer">Download miniforge installer</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> Miniforge3.sh <span class="st">"https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-</span><span class="va">$(</span><span class="fu">uname</span><span class="va">)</span><span class="st">-</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span><span class="st">.sh"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="install-miniforge" class="level1">
-<h1>Install miniforge</h1>
+<section id="install-miniforge" class="level2">
+<h2 class="anchored" data-anchor-id="install-miniforge">Install miniforge</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> Miniforge3.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>Agree to license terms (yes)</li>
 <li>Choose installation path (default is fine)</li>
-<li>Choose whether to initialize mamba (select “yes”)</li>
+<li><strong>Important</strong>: Choose whether to initialize mamba (select “yes”)</li>
 </ol>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="create-environment" class="level1">
-<h1>Create environment</h1>
-<pre><code>mamba create -n single-cell python=3.11</code></pre>
+</section>
+<section id="creating-an-environment" class="level1">
+<h1>Creating an environment</h1>
+<p>Once installed, you can create environments</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-n</span> single-cell python=3.11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>Confirm changes (y)</li>
 </ol>
 </section>
-<section id="activate-environment" class="level1">
-<h1>Activate environment</h1>
-<pre><code>mamba activate single-cell</code></pre>
+<section id="activating-an-environment" class="level1">
+<h1>Activating an environment</h1>
+<p>Once you have created an environment, you can activate it:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate single-cell</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="install-dependencies" class="level1">
-<h1>Install dependencies</h1>
-<pre><code>mamba install -c conda-forge -c bioconda jupyter numpy"&lt;2" scanpy \
-python-igraph leidenalg seaborn scipy scikit-image scikit-misc bbknn \
-celltypist rpy2 anndata2ri=1.1 r-soupx bioconda::bioconductor-scater \ bioconda::bioconductor-scdblfinder bioconda::bioconductor-scry 
-
-pip install scarches</code></pre>
+<section id="installing-packages" class="level1">
+<h1>Installing packages</h1>
+<p>Once an environment is activated, you can install packages. The following commands install the necessary packages for this workshop.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda jupyter numpy<span class="st">"&lt;2"</span> scanpy <span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  python-igraph leidenalg seaborn scipy scikit-image scikit-misc bbknn <span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  celltypist rpy2 anndata2ri=1.1 r-irkernel bioconda::r-sceasy r-soupx <span class="dt">\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  bioconda::bioconductor-scater bioconda::bioconductor-scdblfinder <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  bioconda::bioconductor-scry </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 </main>
