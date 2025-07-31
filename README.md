@@ -25,7 +25,7 @@ Copy the url for the version you wish to download and use `wget` or `curl` to do
 To download the most recent version:
 
 ```bash
-wget https://github.com/CBC-UCONN/Genome_Assembly/archive/refs/tags/2025.06.zip
+wget https://github.com/CBC-UCONN/Single-Cell-Transcriptomics/archive/refs/tags/2025.06.zip
 ```
 One downloaded, unzip the file:
 
