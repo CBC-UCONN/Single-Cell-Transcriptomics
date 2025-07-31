@@ -18,7 +18,7 @@
 
 
 ## Getting Workshop Code
-Code for the workshop can be downloaded from https://github.com/CBC-UCONN/Genome_Assembly/releases.
+Code for the workshop can be downloaded from https://github.com/CBC-UCONN/Single-Cell-Transcriptomics/releases.
 
 Copy the url for the version you wish to download and use `wget` or `curl` to download it.
 
