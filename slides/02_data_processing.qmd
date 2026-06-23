@@ -32,7 +32,7 @@ format:
 
 ## Logging in to the HPC
 ```bash
-ssh \<user\>@mantis.hpc.cam.uchc.edu 
+ssh <user>@mantis.hpc.cam.uchc.edu 
 ```
 
 ## Git Repository
