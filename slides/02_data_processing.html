@@ -216,25 +216,9 @@ Kerry Cobb
 <section id="dataset" class="slide level2 smaller">
 <h2>Dataset</h2>
 <ul>
-<li><a href="https://doi.org/10.1038/s41598-020-64929-x">Caron et al.&nbsp;2020</a></li>
-<li>Childhood acute lymphoblastic leukemia</li>
-<li>Most common childood cancer</li>
-<li>Precursor B-cell acute lymphoblastic leukemia (B-ALL)
-<ul>
-<li>~85% of cases</li>
-<li>Good prognosis</li>
-</ul></li>
-<li>T-cell acute lymphoblastic leukemia (T-ALL)
-<ul>
-<li>~15% of cases</li>
-</ul></li>
-<li>Some patients are refractory or will relapse and succumb</li>
-<li>Compare 4 B-ALL, 2 T-ALL, and 3 healthy controls</li>
-<li>Cells are bone marrow mononuclear cells (BMMCs)</li>
-<li>Each sample sequenced on a different lane of Illumina
-<ul>
-<li>Why is that not ideal?</li>
-</ul></li>
+<li><a href="https://doi.org/10.1016/j.celrep.2020.02.067">De Micheli et al.</a></li>
+<li>Single-Cell Analysis of the Muscle Stem Cell Hierarchy Identifies Heterotypic Communication Signals Involved in Skeletal Muscle Regeneration</li>
+<li>Investigation of muscle regeneration in mice.</li>
 </ul>
 </section>
 <section id="workflow" class="slide level2">
@@ -248,7 +232,7 @@ Kerry Cobb
 </section>
 <section id="logging-in-to-the-hpc" class="slide level2">
 <h2>Logging in to the HPC</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="fu">ssh</span> genomeuser<span class="op">&lt;</span><span class="co">#&gt;@xanadu-submit-ext.cam.uchc.edu</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="fu">ssh</span> <span class="dt">\&lt;</span>user<span class="dt">\&gt;</span>@mantis.hpc.cam.uchc.edu </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="git-repository" class="slide level2">
 <h2>Git Repository</h2>
@@ -260,12 +244,12 @@ Kerry Cobb
 </section>
 <section id="symlink-to-existing-output-data" class="slide level2">
 <h2>Symlink to existing output data</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="bu">cd</span> ~/Single-Cell-Transcriptomics/leukemia/</span>
-<span id="cb3-2"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/leukemia/results/</span>
-<span id="cb3-3"><a href=""></a><span class="bu">cd</span> ~/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38 </span>
-<span id="cb3-4"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38/Homo_sapiens.GRCh38.114.chr.gtf</span>
-<span id="cb3-5"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa</span>
-<span id="cb3-6"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38/star_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="bu">cd</span> ~/Single-Cell-Transcriptomics/micheli_mouse_muscle/</span>
+<span id="cb3-2"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/micheli_mouse_muscle/results/</span>
+<span id="cb3-3"><a href=""></a><span class="bu">cd</span> ~/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39 </span>
+<span id="cb3-4"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39/Mus_musculus.GRCm39.115.chr.gtf</span>
+<span id="cb3-5"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39/Mus_musculus.GRCm39.dna.primary_assembly.fa</span>
+<span id="cb3-6"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39/star_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>You would skip this if doing these analyses on your own</li>
 <li>Some of these steps take a long time to run, so we have provided the output data for you to use in the workshop.</li>
@@ -279,8 +263,7 @@ Kerry Cobb
 <li>NCBI &amp; Ensemble are good source</li>
 <li>For examples see:
 <ul>
-<li><code>resources/Homo_sapiens.GRCh38/download.sh</code></li>
-<li><code>resources/GRCh38.p14/GRCh38_download.sh</code></li>
+<li><code>resources/Mus_musculus.GRCm39/01_download.sh</code></li>
 </ul></li>
 </ul>
 </section>
@@ -303,13 +286,13 @@ GATTTGGGGTTTAAAGGGTGACCTGGTAGG</code></pre>
 <h2>Data Download</h2>
 <ul>
 <li>NCBI Sequence Read Archive (SRA)</li>
-<li>https://www.ncbi.nlm.nih.gov/bioproject/PRJNA548203</li>
+<li>https://www.ncbi.nlm.nih.gov/bioproject/PRJNA600499</li>
 <li>Use SRA Toolkit to download</li>
 <li><code>include-technical</code>
 <ul>
 <li>Necessary to obtain Cell and UMI barcodes</li>
 </ul></li>
-<li>See: <code>leukemia/scripts/01_download.sh</code></li>
+<li>See: <code>micheli_mouse_muscle/scripts/00_download.sh</code></li>
 </ul>
 </section>
 <section id="fastq-format" class="slide level2 smaller">
@@ -380,7 +363,7 @@ GATTTGGGGTTTAAAGGGTGACCTGGTAGG
 <li>GTF (Gene Transfer Format) and GFF (General Feature Format) are common formats</li>
 <li>Annotation files contain information about gene structures, such as exons, introns, and transcripts</li>
 <li>GTF &amp; GFF files are similar but GFF can include more complex features and relationships</li>
-<li>GFF is preferred</li>
+<li>GTF is more strict and has wider compatibility with bioinformatic tools</li>
 </ul>
 </section>
 <section id="annotations-1" class="slide level2 smaller">
@@ -395,7 +378,7 @@ GATTTGGGGTTTAAAGGGTGACCTGGTAGG
 <ul>
 <li>Quality of reads</li>
 <li>Quantify of reads</li>
-<li>Adapters Contamination</li>
+<li>Adapter Contamination</li>
 </ul>
 </section>
 <section id="adapter-contamination" class="slide level2">
@@ -543,9 +526,10 @@ GATTTGGGGTTTAAAGGGTGACCTGGTAGG
 <ul>
 <li><code>zcat</code> if gzipped</li>
 </ul></li>
-<li><code>soloOutFormatFeaturesGzipped</code>
+<li><code>soloFeatures</code>
 <ul>
-<li>compress output mtx files, <code>scanpy</code> expects these to be .gz</li>
+<li>Gene: Count matrix for reads mapped to exons</li>
+<li>Velocyto: Count matrix for reads mapped to introns, exons, and ambiguous</li>
 </ul></li>
 </ul>
 </div></div>
