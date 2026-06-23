@@ -13,7 +13,7 @@ if [ "$script" == "00_download.sh" ]; then
   ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/micheli_mouse_muscle/raw_data  ../raw_data
   for f in /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/micheli_mouse_muscle/scripts/logs/00_download*.out; do ln -s "$f" logs/; done
 
-elif [ "$script" == "01_fastqc.sh" ]; then
+elif [ "$script" == "01_fastqc_raw.sh" ]; then
   if [ ! -d "../results" ]; then
     mkdir ../results
   fi
