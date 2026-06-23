@@ -18,8 +18,9 @@ format:
 ## Dataset {.smaller}
 - [De Micheli et al.](https://doi.org/10.1016/j.celrep.2020.02.067)
 - Single-Cell Analysis of the Muscle Stem Cell Hierarchy Identifies Heterotypic Communication Signals Involved in Skeletal Muscle Regeneration
-- Investigation of muscle regeneration in mice.
-
+- Investigation of muscle regeneration in mice post injury.
+- Samples across 4 time points (0, 2, 5, 7 days post injury).
+- Identified heterogeneous population of muscle stem cells.
 
 
 ## Workflow
@@ -31,7 +32,7 @@ format:
 
 ## Logging in to the HPC
 ```bash
-ssh genomeuser<#>@xanadu-submit-ext.cam.uchc.edu
+ssh <user>@mantis.hpc.cam.uchc.edu 
 ```
 
 ## Git Repository
@@ -74,11 +75,11 @@ GATTTGGGGTTTAAAGGGTGACCTGGTAGG
 
 ## Data Download
 - NCBI Sequence Read Archive (SRA) 
-- https://www.ncbi.nlm.nih.gov/bioproject/PRJNA548203
+- https://www.ncbi.nlm.nih.gov/bioproject/PRJNA600499
 - Use SRA Toolkit to download
 - `include-technical`
   - Necessary to obtain Cell and UMI barcodes
-- See: `leukemia/scripts/01_download.sh`
+- See: `micheli_mouse_muscle/scripts/00_download.sh`
 
 
 ## FASTQ Format {.smaller}
@@ -137,7 +138,7 @@ The components of the header are:
 - GTF (Gene Transfer Format) and GFF (General Feature Format) are common formats
 - Annotation files contain information about gene structures, such as exons, introns, and transcripts
 - GTF & GFF files are similar but GFF can include more complex features and relationships
-- GFF is preferred
+- GTF is more strict and has wider compatibility with bioinformatic tools
 
 ## Annotations {.smaller}
 - Can be downloaded from Ensembl or NCBI
@@ -147,7 +148,7 @@ The components of the header are:
 ## Quality Control
 - Quality of reads
 - Quantify of reads
-- Adapters Contamination
+- Adapter Contamination
 
 
 ## Adapter Contamination

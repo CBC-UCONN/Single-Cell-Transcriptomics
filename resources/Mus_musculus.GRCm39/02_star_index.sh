@@ -18,7 +18,7 @@ STAR \
   --genomeDir star_index \
   --genomeFastaFiles Mus_musculus.GRCm39.dna.primary_assembly.fa \
   --sjdbGTFfile Mus_musculus.GRCm39.115.gtf \
-  --sjdbOverhang 97
+  --sjdbOverhang 57
 
 echo "End time: $(date)"
 echo "Elapsed time: $(date -ud "@$(($(date +%s)-start))" +'%H hr %M min %S sec')"
