@@ -16,19 +16,10 @@ format:
 
 
 ## Dataset {.smaller}
-- [Caron et al. 2020](https://doi.org/10.1038/s41598-020-64929-x)
-- Childhood acute lymphoblastic leukemia
-- Most common childood cancer
-- Precursor B-cell acute lymphoblastic leukemia (B-ALL) 
-  - ~85% of cases
-  - Good prognosis
-- T-cell acute lymphoblastic leukemia (T-ALL)
-  - ~15% of cases
-- Some patients are refractory or will relapse and succumb
-- Compare 4 B-ALL, 2 T-ALL, and 3 healthy controls
-- Cells are Bone Marrow Mononuclear cells (BMMCs)
-- Each sample sequenced on a different lane of Illumina
-  - Why is that not ideal?
+- [De Micheli et al.](https://doi.org/10.1016/j.celrep.2020.02.067)
+- Single-Cell Analysis of the Muscle Stem Cell Hierarchy Identifies Heterotypic Communication Signals Involved in Skeletal Muscle Regeneration
+- Investigation of muscle regeneration in mice.
+
 
 
 ## Workflow
@@ -56,10 +47,10 @@ git clone https://github.com/CBC-UCONN/Single-Cell-Transcriptomics.git
 ```bash
 cd ~/Single-Cell-Transcriptomics/leukemia/
 ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/leukemia/results/
-cd ~/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38 
-ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38/Homo_sapiens.GRCh38.114.chr.gtf
-ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Homo_sapiens.GRCh38/star_index
+cd ~/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39 
+ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39/Mus_musculus.GRCm39.115.chr.gtf
+ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39/Mus_musculus.GRCm39.dna.primary_assembly.fa
+ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39/star_index
 ```
 - You would skip this if doing these analyses on your own 
 - Some of these steps take a long time to run, so we have provided the output data for you to use in the workshop.
@@ -70,8 +61,7 @@ ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Hom
 - Required for mapping reads
 - NCBI & Ensemble are good source
 - For examples see:
-  - `resources/Homo_sapiens.GRCh38/download.sh`
-  - `resources/GRCh38.p14/GRCh38_download.sh`
+  - `resources/Mus_musculus.GRCm39/01_download.sh`
 
 
 ## FASTA Format
@@ -260,8 +250,11 @@ Can occur if insert size is too short
   - 2nd file barcode (cell+UMI)
 - `readFilesCommand` 
   - `zcat` if gzipped
-- `soloOutFormatFeaturesGzipped`
-  - compress output mtx files, `scanpy` expects these to be .gz
+- `soloFeatures`
+  - Gene: Count matrix for reads mapped to exons
+  - Velocyto: Count matrix for reads mapped to introns, exons, and ambiguous
+
+
 :::
 ::::
 

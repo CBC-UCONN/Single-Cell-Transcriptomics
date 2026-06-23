@@ -1,1 +1,6 @@
 *.fastq.gz
+*.fa
+*.out
+*.gtf
+
+resources/Mus_musculus.GRCm39/star_index
