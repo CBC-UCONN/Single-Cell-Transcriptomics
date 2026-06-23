@@ -18,8 +18,9 @@ format:
 ## Dataset {.smaller}
 - [De Micheli et al.](https://doi.org/10.1016/j.celrep.2020.02.067)
 - Single-Cell Analysis of the Muscle Stem Cell Hierarchy Identifies Heterotypic Communication Signals Involved in Skeletal Muscle Regeneration
-- Investigation of muscle regeneration in mice.
-
+- Investigation of muscle regeneration in mice post injury.
+- Samples across 4 time points (0, 2, 5, 7 days post injury).
+- Identified heterogeneous population of muscle stem cells.
 
 
 ## Workflow

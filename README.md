@@ -35,4 +35,4 @@ unzip 2025.06.zip
 Within the Single-Cell-Transcriptomics directory, run the following commands to create the necessary symlinks:
 ```bash 
 ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/leukemia/results/ leukemia/results -->
-```
+<!-- ``` -->
