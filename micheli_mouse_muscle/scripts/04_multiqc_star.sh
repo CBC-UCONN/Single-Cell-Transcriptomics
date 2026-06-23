@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=04_multiqc-star
+#SBATCH --job-name=04_multiqc_star
 #SBATCH -c 1
 #SBATCH --mem=8G
 #SBATCH --partition=general

@@ -39,7 +39,7 @@ elif [ "$script" == "04_multiqc_star.sh" ]; then
     mkdir ../results
   fi
   ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/micheli_mouse_muscle/results/04_multiqc_star ../results/04_multiqc_star
-  for f in /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/micheli_mouse_muscle/scripts/logs/04_multiqc-star*.out; do ln -s "$f" logs/; done
+  for f in /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/micheli_mouse_muscle/scripts/logs/04_multiqc_star*.out; do ln -s "$f" logs/; done
 
 else
     echo "Unknown script: ${script}"
