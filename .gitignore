@@ -2,5 +2,11 @@
 *.fa
 *.out
 *.gtf
+.ipynb_checkpoints/
+*.h5ad
+*.sam
+*.bam
+results/
+
 
 resources/Mus_musculus.GRCm39/star_index
