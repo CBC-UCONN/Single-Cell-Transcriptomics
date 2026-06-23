@@ -1,12 +1,13 @@
 *.fastq.gz
+*.fa.gz
 *.fa
 *.out
 *.gtf
+*.gtf.gz
 .ipynb_checkpoints/
 *.h5ad
 *.sam
 *.bam
 results/
-
 
 resources/Mus_musculus.GRCm39/star_index

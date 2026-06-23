@@ -113,7 +113,7 @@ format:
 - [Critical Step (Garbage in, garbage out)!]{.fragment .highlight-red}
 - Many different methods
   - Details beyond the scope of this workshop
-- Cell selction / enrichment
+- Cell selection / enrichment
 - Sample clean-up
 :::
 
@@ -201,7 +201,7 @@ Not all of the library will be used up in most cases
 ##
 ### Single Cell Isolation - Combinatorial Barcoding
 #### Parse Biosciences Evercode {.center}
-- Cells serve as reacion vessel
+- Cells serve as reaction vessel
 - Serial splitting, barcoding, and pooling results in each cell having a unique combination of barcodes
 - C(96,4) = 3,321,960 
 

@@ -44,14 +44,9 @@ git clone https://github.com/CBC-UCONN/Single-Cell-Transcriptomics.git
 ```
 
 ## Symlink to existing output data
-```bash
-cd ~/Single-Cell-Transcriptomics/leukemia/
-ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/leukemia/results/
-cd ~/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39 
-ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39/Mus_musculus.GRCm39.115.chr.gtf
-ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39/Mus_musculus.GRCm39.dna.primary_assembly.fa
-ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39/star_index
 ```
+- Run `./mock_run.sh <script_name>`.
+  - For example `./mock_run.sh 00_download.sh`
 - You would skip this if doing these analyses on your own 
 - Some of these steps take a long time to run, so we have provided the output data for you to use in the workshop.
 - **Please don't copy these data on the cluster!**
