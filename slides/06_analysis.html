@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="03_tools_files/libs/clipboard/clipboard.min.js"></script>
-<script src="03_tools_files/libs/quarto-html/tabby.min.js"></script>
-<script src="03_tools_files/libs/quarto-html/popper.min.js"></script>
-<script src="03_tools_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="03_tools_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="03_tools_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="03_tools_files/libs/quarto-html/quarto-syntax-highlighting-226bd0f977fa82dfae4534cac220d79a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="06_analysis_files/libs/clipboard/clipboard.min.js"></script>
+<script src="06_analysis_files/libs/quarto-html/tabby.min.js"></script>
+<script src="06_analysis_files/libs/quarto-html/popper.min.js"></script>
+<script src="06_analysis_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="06_analysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="06_analysis_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="06_analysis_files/libs/quarto-html/quarto-syntax-highlighting-226bd0f977fa82dfae4534cac220d79a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.23">
 
   <meta name="author" content="Kerry Cobb">
-  <title>Tools for Single Cell Analysis</title>
+  <title>Single Cell RNAseq Analysis</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="03_tools_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="03_tools_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="06_analysis_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="06_analysis_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -28,78 +28,12 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="03_tools_files/libs/revealjs/dist/theme/quarto-250687541b6fd0303e6fa9a425de9713.css">
-  <link href="03_tools_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="03_tools_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="03_tools_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="03_tools_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="06_analysis_files/libs/revealjs/dist/theme/quarto-250687541b6fd0303e6fa9a425de9713.css">
+  <link href="06_analysis_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="06_analysis_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="06_analysis_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="06_analysis_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -194,7 +128,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Tools for Single Cell Analysis</h1>
+  <h1 class="title">Single Cell RNAseq Analysis</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -205,107 +139,383 @@ Kerry Cobb
 </div>
 
 </section>
-<section id="objectives-learning-goals" class="slide level2">
-<h2>Objectives &amp; Learning Goals</h2>
+<section id="steps" class="slide level2">
+<h2>Steps</h2>
+<ol type="1">
+<li>Quality control</li>
+<li>Normalization</li>
+<li>Feature selection</li>
+<li>Dimensionality reduction</li>
+<li>Integration</li>
+<li>Clustering</li>
+<li>Annotation</li>
+</ol>
+</section>
+<section id="steps-1" class="slide level2">
+<h2>Steps</h2>
+<ol type="1">
+<li>Quality control</li>
+<li>Normalization</li>
+<li>Feature selection</li>
+<li>Dimensionality reduction</li>
+<li>Integration</li>
+<li>Clustering</li>
+<li>Annotation</li>
+</ol>
 <ul>
-<li>Brief overview of tools used in single cell analysis</li>
+<li>Not necessarily a linear process</li>
 </ul>
 </section>
-<section id="python" class="slide level2">
-<h2>Python</h2>
+<section id="quality-control" class="slide level2 smaller">
+<h2>Quality Control</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li>Versatile and popular object oriented programming language</li>
-<li>Expressive &amp; readable syntax</li>
-<li>Extensive library ecosystem</li>
-<li>Heavily used in data science and machine learning</li>
+<li><strong>Filter empty droplets</strong></li>
+<li>Filter droplets with multiple cells</li>
+<li>Remove low quality cells
+<ul>
+<li>Cells with high mitochondrial gene counts
+<ul>
+<li>Suggests cell death or damage</li>
+</ul></li>
+</ul></li>
+<li>Filter cells with low gene counts</li>
+<li>Filter genes expressed in few cells</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="img/empty_droplet-biorender.png" width="200"></p>
+</div></div>
+</section>
+<section id="quality-control-1" class="slide level2 smaller">
+<h2>Quality Control</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Filter empty droplets</strong></li>
+<li>Filter droplets with multiple cells</li>
+<li>Remove low quality cells
+<ul>
+<li>Cells with high mitochondrial gene counts
+<ul>
+<li>Suggests cell death or damage</li>
+</ul></li>
+</ul></li>
+<li>Filter cells with low gene counts</li>
+<li>Filter genes expressed in few cells</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="img/droplet_ambient-biorender.png" width="200"></p>
+</div></div>
+</section>
+<section id="quality-control-2" class="slide level2 smaller">
+<h2>Quality Control</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Filter empty droplets</li>
+<li><strong>Filter droplets with multiple cells</strong></li>
+<li>Remove low quality cells
+<ul>
+<li>Cells with high mitochondrial gene counts
+<ul>
+<li>Suggests cell death or damage</li>
+</ul></li>
+</ul></li>
+<li>Filter cells with low gene counts</li>
+<li>Filter genes expressed in few cells</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="img/doublet-biorender.png" width="200"></p>
+</div></div>
+</section>
+<section id="quality-control-3" class="slide level2 smaller">
+<h2>Quality Control</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Filter empty droplets</li>
+<li>Filter droplets with multiple cells</li>
+<li>Remove low quality cells
+<ul>
+<li>Cells with high mitochondrial gene counts
+<ul>
+<li>Suggests cell death or damage</li>
+</ul></li>
+</ul></li>
+<li>Filter cells with low gene counts</li>
+<li>Filter genes expressed in few cells</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="img/ruptered_cell.png"></p>
+</div></div>
+</section>
+<section id="quality-control-4" class="slide level2 smaller">
+<h2>Quality Control</h2>
+<ul>
+<li>Can set hard filtering thresholds
+<ul>
+<li>These end up being arbitrary as there is rarely a clear boundary</li>
+<li>Time intensive
+<ul>
+<li>Doesn’t scale well with large datasets</li>
+</ul></li>
+</ul></li>
+<li>Median Absolute Deviation (MAD) based filtering
+<ul>
+<li>Uses the distribution of QC metrics to set thresholds</li>
+<li>More robust to outliers</li>
+<li>Can be automated</li>
+<li><em>MAD = median(|x - median(x)|)</em>, where <em>x</em> is the QC metric</li>
+</ul></li>
 </ul>
 </section>
-<section id="r" class="slide level2">
-<h2>R</h2>
+<section id="quality-control-5" class="slide level2 smaller">
+<h2>Quality Control</h2>
 <ul>
-<li>Language created for statistical computing</li>
-<li>Extensive library ecosystem for statistical analysis</li>
-<li>Heavily used in bioinformatics and statistics</li>
-<li>Excellent for data visualization</li>
+<li>Best to be as permissive as possible
+<ul>
+<li>Don’t want to filter out real cells</li>
+</ul></li>
+<li>Can always filter more later</li>
+<li>Iterative and data driven approach is best
+<ul>
+<li>But beware of <a href="https://sites.stat.columbia.edu/gelman/research/unpublished/p_hacking.pdf">The garden of forking paths</a>
+<ul>
+<li>Why multiple comparisons can be a problem, even when there is no “fishing expedition” or “p-hacking”</li>
+<li>Be careful with your conclusions</li>
+</ul></li>
+</ul></li>
 </ul>
 </section>
-<section id="python-vs-r" class="slide level2">
-<h2>Python vs R</h2>
+<section id="doublet-detection" class="slide level2">
+<h2>Doublet Detection</h2>
 <ul>
-<li>R has lead over python for existing statistical analysis libraries</li>
-<li>Python is more popular for machine learning</li>
-<li>Python is more versatile for general programming tasks</li>
-<li>Python scales better to larger datasets</li>
+<li>Can be filtered out using tools like the <code>scDblFinder</code> R package or <code>Scrublet</code> Python package</li>
 </ul>
+<p><img data-src="img/doublet-biorender.png" class="" width="200"></p>
 </section>
-<section id="python-vs-r-1" class="slide level2">
-<h2>Python vs R</h2>
+<section id="correction-of-ambient-rna" class="slide level2 smaller">
+<h2>Correction of ambient RNA</h2>
 <ul>
-<li>Higher rate of growth of Python packages for single cell analysis</li>
+<li>RNA in the environment of the cell
+<ul>
+<li>Can be from dead cells, lysed cells, or other sources</li>
+</ul></li>
+<li>Potentially a significant source of noise in single cell RNAseq data</li>
+<li>Can be corrected for using tools like <code>SoupX</code>
+<ul>
+<li>These tools use the expression profiles of empty droplets to estimate the ambient RNA profile</li>
+<li>They then subtract this profile from the expression data of each cell</li>
+</ul></li>
 </ul>
 
-<img data-src="img/py_v_r-zappia_theis_2021.png" class="r-stretch quarto-figure-center"><p class="caption">Zappia &amp; Theis 2021</p></section>
-<section id="python-vs-r-2" class="slide level2 smaller">
-<h2>Python vs R</h2>
+<img data-src="img/droplet_ambient-biorender.png" width="200" class="r-stretch"></section>
+<section id="normalization" class="slide level2 smaller">
+<h2>Normalization</h2>
 <ul>
-<li>Recommendation:
+<li>Each step of single cell workflow introduces a degree of variablity
 <ul>
-<li>Get comfortable with both</li>
-<li>R will stay relevant for a long time</li>
-<li>Python popularity is growing rapidly
-<ul>
-<li>Particularly in machine learning</li>
+<li>Capture of cells and mRNA molecules</li>
+<li>Reverse transcription</li>
+<li>Amplification</li>
+<li>Sequencing</li>
 </ul></li>
-</ul></li>
-<li>Challenge:
-<ul>
-<li>Diffierent syntax
-<ul>
-<li>Its not actually that different</li>
-</ul></li>
-<li>Different package ecosystems
-<ul>
-<li>We have a solution for that</li>
-</ul></li>
-<li>Switching between languages
-<ul>
-<li>We have a solution for that too!</li>
-</ul></li>
-</ul></li>
+<li>Count matrix contains widely varying variance terms</li>
+<li>Statistical methods assume uniform variance</li>
 </ul>
 </section>
-<section id="mamba" class="slide level2">
-<h2>Mamba</h2>
+<section id="normalization---depth-bias" class="slide level2 smaller">
+<h2>Normalization - Depth bias</h2>
 <ul>
-<li>A cross platform package manager developed for Python</li>
-<li>Can install non-python packages as well</li>
-<li>Reimplementation of conda
-<ul>
-<li>Uses the same package repositories as conda</li>
-<li>Much faster</li>
-</ul></li>
-<li>Create isolated environments</li>
-<li>Install packages</li>
+<li>Two genes: A &amp; B</li>
+<li>Two cell types: Blue &amp; Green</li>
+<li>Normalize by dividing UMI counts for each gene by total</li>
 </ul>
-</section>
-<section id="jupyter" class="slide level2">
-<h2>Jupyter</h2>
-<ul>
-<li>Interactive notebooks for data analysis</li>
-<li>Can run Python, R, and many other languages</li>
-<li>Supports rich media output</li>
-<li>Great for exploratory data analysis and visualization</li>
-</ul>
-</section>
-<section id="start-jupyter-notebook" class="slide level2">
-<h2>Start Jupyter Notebook</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">sbatch</span> jupyter.sh <span class="op">&lt;</span>mamba env<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="anndata" class="slide level2">
-<h2>anndata</h2>
 
+<img data-src="img/depth_bias-cambridge_institute.png" class="r-stretch quarto-figure-center"><p class="caption">Cambridge Institute</p><ul>
+<li>There is not differential expression, only a difference in sequencing depth</li>
+</ul>
+</section>
+<section id="normalization-1" class="slide level2 smaller">
+<h2>Normalization</h2>
+<ul>
+<li>Normalization adjusts the raw counts by scaling to a specified range.</li>
+<li>Reduces technical differences so that differences between are primarily biological</li>
+<li>See <a href="https://doi.org/10.1038/s41592-023-01814-1">Ahlmann-Eltze et al.&nbsp;2020</a> for review &amp; benchmarking of normalization methods</li>
+<li>Different techniques are better suited to different downstream analyses</li>
+</ul>
+</section>
+<section id="normalization---techniques" class="slide level2 smaller">
+<h2>Normalization - Techniques</h2>
+<ul>
+<li>Shifted logarithm
+<ul>
+<li>Works well for dimensionality reduction and differential expression</li>
+</ul></li>
+<li>Scran’s pooling-based size factor estimation method
+<ul>
+<li>Works well or batch correction<br>
+</li>
+</ul></li>
+<li>Analytic Pearson residuals</li>
+</ul>
+</section>
+<section id="feature-selection" class="slide level2 smaller">
+<h2>Feature Selection</h2>
+<ul>
+<li>Many genes are not informative for downstream analysis</li>
+<li>We want to:
+<ul>
+<li>Select gene that captue biologically meaningful variation</li>
+<li>Reduce the number of genes that only contribute noise</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/feature_selection-luecken_theis_2019.jpeg" class="" width="800"></p>
+<figcaption>Luecken &amp; Theis, 2019</figcaption>
+</figure>
+</div>
+</section>
+<section id="dimensionality-reduction" class="slide level2 smaller">
+<h2>Dimensionality Reduction</h2>
+<ul>
+<li>scRNAseq data suffers from the “curse of dimensionality”
+<ul>
+<li>The data have a high number of dimensions (genes)</li>
+<li>Data contains more noise and redundancy
+<ul>
+<li>Added dimensions do not add more information</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="dimensionality-reduction-1" class="slide level2 smaller">
+<h2>Dimensionality Reduction</h2>
+<ul>
+<li>We already reduced the dimensionality of the data by selecting a subset of genes</li>
+<li>We can reduce it further with dimensionality reduction algorithms</li>
+</ul>
 
-<img data-src="img/anndata.png" class="r-stretch"></section>
+<img data-src="img/dimensionality_reduction-luecken_theis_2019.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Luecken &amp; Theis, 2019</p><ul>
+<li>The most popular:
+<ul>
+<li>Principal Component Analysis (PCA)</li>
+<li>t-distributed Stochastic Neighbor Embedding (t-SNE)</li>
+<li>Uniform Manifold Approximation and Projection (UMAP)</li>
+</ul></li>
+</ul>
+</section>
+<section id="principal-component-analysis-pca" class="slide level2 smaller">
+<h2>Principal Component Analysis (PCA)</h2>
+<ul>
+<li>PCA creates new set of uncorrelated variables (principal components) that capture the most variance in the data</li>
+<li>The first principal component captures the most variance, the second captures the second most, and so on</li>
+<li>We can select the top principal components to use for downstream analysis</li>
+<li>Highly efficient and easy to interpret</li>
+<li>Not ideal for visualization</li>
+</ul>
+</section>
+<section id="t-distributed-stochastic-neighbor-embedding-t-sne" class="slide level2 smaller">
+<h2>t-distributed Stochastic Neighbor Embedding (t-SNE)</h2>
+<ul>
+<li>Graph based, non-linear dimensionality reduction technique</li>
+<li>Only local distances are preserved</li>
+<li>Stochastic, so results can vary between runs</li>
+<li>Good for visualizing clusters in high-dimensional data</li>
+<li>See <a href="https://youtu.be/NEaUSP4YerM">StatQuest Video</a> for a great explanation</li>
+</ul>
+</section>
+<section id="uniform-manifold-approximation-and-projection-umap" class="slide level2 smaller">
+<h2>Uniform Manifold Approximation and Projection (UMAP)</h2>
+<ul>
+<li>Graph based, non-linear dimensionality reduction technique</li>
+<li>Similar in principle to t-SNE</li>
+<li>Uses principal components to create a graph</li>
+<li>Preserves both local and global structure</li>
+</ul>
+</section>
+<section id="integration" class="slide level2 smaller">
+<h2>Integration</h2>
+<ul>
+<li>Batch effects are a major challenge in scRNA-seq data analysis
+<ul>
+<li>Arise from processing cells in separate batches
+<ul>
+<li>Such as individual sample</li>
+</ul></li>
+<li>Obscure biological realities</li>
+</ul></li>
+<li>Removing batch effects is essential for analyses utlizing multiple batches</li>
+</ul>
+
+<img data-src="img/batch_effect-10x.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">10X Genomics</p></section>
+<section id="integration-1" class="slide level2 smaller">
+<h2>Integration</h2>
+
+<img data-src="img/integration-luecken_theis_2019.jpeg" width="750" class="r-stretch quarto-figure-center"><p class="caption">Luecken &amp; Theis, 2019</p></section>
+<section id="clustering" class="slide level2 smaller">
+<h2>Clustering</h2>
+<ul>
+<li>Clustering is the process of grouping cells based on their expression profiles</li>
+<li>Common clustering algorithms:
+<ul>
+<li>K-means</li>
+<li>Hierarchical clustering</li>
+<li>Louvain clustering</li>
+<li>Leiden clustering</li>
+</ul></li>
+<li>Louvain clustering was very popular for scRNA-seq data</li>
+<li>Leiden is now the preferred algorithm
+<ul>
+<li>More robust to noise and outliers</li>
+<li>Better at detecting small clusters</li>
+</ul></li>
+<li>Clusters can be visualized with UMAP or t-SNE</li>
+</ul>
+</section>
+<section id="clustering-1" class="slide level2">
+<h2>Clustering</h2>
+<ul>
+<li>Keep in mind:
+<ul>
+<li>Clustering is an approximation of the underlying biological reality</li>
+<li>Different levels can be appropriate for different questions
+<ul>
+<li>There may not be a single “correct” clustering</li>
+</ul></li>
+<li>Clustering algorithm will create as many cluster as you ask it to</li>
+<li>Don’t overlook continuous variation</li>
+</ul></li>
+</ul>
+</section>
+<section id="annotation" class="slide level2 smaller">
+<h2>Annotation</h2>
+<ul>
+<li>Assigning cell types to clusters</li>
+<li>Can be done using:
+<ul>
+<li>Marker genes</li>
+<li>Reference datasets</li>
+<li>Automated annotation tools</li>
+</ul></li>
+<li>Marker genes are genes that are specifically expressed in a particular cell type</li>
+<li>Reference datasets are datasets that have already been annotated</li>
+</ul>
+</section>
+<section id="steps-2" class="slide level2">
+<h2>Steps</h2>
+<ol type="1">
+<li>Quality control</li>
+<li>Normalization</li>
+<li>Dimensionality reduction</li>
+<li>Clustering</li>
+<li>Integration</li>
+<li>Annotation</li>
+</ol>
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -314,19 +524,19 @@ Kerry Cobb
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="03_tools_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="06_analysis_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="03_tools_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="03_tools_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="03_tools_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="03_tools_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="03_tools_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="06_analysis_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="06_analysis_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="06_analysis_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="06_analysis_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="06_analysis_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="03_tools_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="03_tools_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="03_tools_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="03_tools_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="06_analysis_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="06_analysis_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="06_analysis_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="06_analysis_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
