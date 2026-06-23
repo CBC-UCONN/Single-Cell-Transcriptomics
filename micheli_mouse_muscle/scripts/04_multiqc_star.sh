@@ -6,8 +6,8 @@
 #SBATCH --qos=general
 #SBATCH -o logs/%x_%j.out
 
-
-hostname
+echo "Job running on: $(hostname)"
+start=$(date +%s)
 echo "Start time: $(date)"
 
 module load MultiQC/1.15
@@ -20,3 +20,4 @@ mkdir -p $outdir
 multiqc -f -o $outdir $indir
 
 echo "End time: $(date)"
+echo "Elapsed time: $(date -ud "@$(($(date +%s)-start))" +'%H hr %M min %S sec')"

@@ -33,9 +33,9 @@ One downloaded, unzip the file:
 unzip 2025.06.zip
 ``` 
 
-If you do not wish to run the entire pipeline (scripts 01-05), you will need to create symlinks to the pre-existing results files.
+<!-- If you do not wish to run the entire pipeline (scripts 01-05), you will need to create symlinks to the pre-existing results files.
 
 Within the Single-Cell-Transcriptomics directory, run the following commands to create the necessary symlinks:
 ```bash 
-ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/leukemia/results/ leukemia/results
+ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/leukemia/results/ leukemia/results -->
 ```
