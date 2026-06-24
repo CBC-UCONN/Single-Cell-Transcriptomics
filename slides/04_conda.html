@@ -102,6 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-environment" class="level1">
 <h1>Create environment</h1>
+<p>Note the use of <code>mamba</code> instead of <code>conda</code>. Mamba is a faster drop-in replacement for conda. It is recommended to use mamba for creating environments and installing packages.</p>
 <pre><code>conda create -n single-cell python=3.11</code></pre>
 <ol type="1">
 <li>Confirm changes (y)</li>
@@ -113,29 +114,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="install-dependencies" class="level1">
 <h1>Install dependencies</h1>
-<pre><code>
-conda install -c conda-forge -c bioconda jupyter numpy scanpy pertpy upsetplot \
-harmonypy palantir python-igraph leidenalg seaborn scipy scikit-image scikit-misc \
-rpy2 anndata2ri \
-r-soupx r-seurat \
-bioconda::bioconductor-scdblfinder bioconda::bioconductor-zellkonverter \
-bioconda::bioconductor-singlecellexperiment
+<pre><code>conda install -c conda-forge -c bioconda jupyter scanpy rpy2 anndata2ri scipy python-igraph r-soupx 
 
-mamba install -c conda-forge -c bioconda jupyter numpy"&lt;2" scanpy pertpy upsetplot \
-harmonypy palantir python-igraph leidenalg seaborn scipy scikit-image scikit-misc \
-rpy2 anndata2ri=1.1 \
-r-soupx r-seurat \
-bioconda::bioconductor-scdblfinder bioconda::bioconductor-zellkonverter \
-bioconda::bioconductor-singlecellexperiment \
+conda install -c conda-forge -c bioconda bioconductor-scdblfinder upsetplot 
+
+conda install -c conda-forge -c bioconda harmonypy scikit-misc
 </code></pre>
-<p>mamba create -n single-cell -c conda-forge -c bioconda<br>
-jupyter scanpy numpy”&lt;2” scipy<br>
-harmonypy palantir python-igraph leidenalg seaborn scikit-image scikit-misc<br>
-rpy2 anndata2ri upsetplot pertpy<br>
-r-soupx r-seurat<br>
-bioconductor-scdblfinder bioconductor-zellkonverter<br>
-bioconductor-singlecellexperiment</p>
-<p>mamba create -n single-cell python=3.11 mamba activate single-cell mamba install -c conda-forge -c bioconda jupyter scanpy rpy2 anndata2ri scipy &nbsp; r-soupx bioconda::bioconductor-scdblfinder</p>
 </section>
 
 </main>

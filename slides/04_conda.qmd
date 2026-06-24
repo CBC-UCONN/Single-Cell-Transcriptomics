@@ -26,19 +26,21 @@ source ~/.bashrc
 # Create environment
 Note the use of `mamba` instead of `conda`. Mamba is a faster drop-in replacement for conda. It is recommended to use mamba for creating environments and installing packages.
 ```
-mamba create -n single-cell python=3.11
+conda create -n single-cell python=3.11
 ```
 1. Confirm changes (y)
 
 # Activate environment
 ```
-mamba activate single-cell
+conda activate single-cell
 ```
 
 # Install dependencies
 ```
-mamba install -c conda-forge -c bioconda jupyter scanpy rpy2 anndata2ri scipy python-igraph r-soupx 
+conda install -c conda-forge -c bioconda jupyter scanpy rpy2 anndata2ri scipy python-igraph r-soupx 
 
-mamba install -c conda-forge -c bioconda bioconductor-scdblfinder upsetplot harmonypy scikit-misc
+conda install -c conda-forge -c bioconda bioconductor-scdblfinder upsetplot 
+
+conda install -c conda-forge -c bioconda harmonypy scikit-misc
 
 ```
