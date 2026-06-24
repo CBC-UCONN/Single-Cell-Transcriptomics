@@ -56,12 +56,9 @@ format:
     - We have a solution for that too!
 
 
-## Mamba
+## Conda
 - A cross platform package manager developed for Python
 - Can install non-python packages as well
-- Reimplementation of conda
-  - Uses the same package repositories as conda
-  - Much faster
 - Create isolated environments
 - Install packages
 
@@ -73,10 +70,8 @@ format:
 - Great for exploratory data analysis and visualization
 
 
-## Start Jupyter Notebook
-```bash 
-sbatch jupyter.sh <mamba env>
-```
+## anndata
+![](img/anndata_diagram.png)
 
 ## anndata
-![](img/anndata.png)
+![](img/full_anndata_diagram.svg)

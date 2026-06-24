@@ -218,7 +218,9 @@ Kerry Cobb
 <ul>
 <li><a href="https://doi.org/10.1016/j.celrep.2020.02.067">De Micheli et al.</a></li>
 <li>Single-Cell Analysis of the Muscle Stem Cell Hierarchy Identifies Heterotypic Communication Signals Involved in Skeletal Muscle Regeneration</li>
-<li>Investigation of muscle regeneration in mice.</li>
+<li>Investigation of muscle regeneration in mice post injury.</li>
+<li>Samples across 4 time points (0, 2, 5, 7 days post injury).</li>
+<li>Identified heterogeneous population of muscle stem cells.</li>
 </ul>
 </section>
 <section id="workflow" class="slide level2">
@@ -232,7 +234,7 @@ Kerry Cobb
 </section>
 <section id="logging-in-to-the-hpc" class="slide level2">
 <h2>Logging in to the HPC</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="fu">ssh</span> <span class="dt">\&lt;</span>user<span class="dt">\&gt;</span>@mantis.hpc.cam.uchc.edu </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="fu">ssh</span> <span class="op">&lt;</span>user<span class="op">&gt;</span>@mantis.hpc.cam.uchc.edu </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="git-repository" class="slide level2">
 <h2>Git Repository</h2>
@@ -244,13 +246,11 @@ Kerry Cobb
 </section>
 <section id="symlink-to-existing-output-data" class="slide level2">
 <h2>Symlink to existing output data</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="bu">cd</span> ~/Single-Cell-Transcriptomics/micheli_mouse_muscle/</span>
-<span id="cb3-2"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/micheli_mouse_muscle/results/</span>
-<span id="cb3-3"><a href=""></a><span class="bu">cd</span> ~/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39 </span>
-<span id="cb3-4"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39/Mus_musculus.GRCm39.115.chr.gtf</span>
-<span id="cb3-5"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39/Mus_musculus.GRCm39.dna.primary_assembly.fa</span>
-<span id="cb3-6"><a href=""></a><span class="fu">ln</span> <span class="at">-s</span> /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/resources/Mus_musculus.GRCm39/star_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
+<li>Run <code>./mock_run.sh &lt;script_name&gt;</code>.
+<ul>
+<li>For example <code>./mock_run.sh 00_download.sh</code></li>
+</ul></li>
 <li>You would skip this if doing these analyses on your own</li>
 <li>Some of these steps take a long time to run, so we have provided the output data for you to use in the workshop.</li>
 <li><strong>Please don’t copy these data on the cluster!</strong></li>
@@ -286,7 +286,7 @@ GATTTGGGGTTTAAAGGGTGACCTGGTAGG</code></pre>
 <h2>Data Download</h2>
 <ul>
 <li>NCBI Sequence Read Archive (SRA)</li>
-<li>https://www.ncbi.nlm.nih.gov/bioproject/PRJNA600499</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA600499">https://www.ncbi.nlm.nih.gov/bioproject/PRJNA600499</a></li>
 <li>Use SRA Toolkit to download</li>
 <li><code>include-technical</code>
 <ul>

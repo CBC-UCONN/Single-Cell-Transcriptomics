@@ -45,7 +45,6 @@ git clone https://github.com/CBC-UCONN/Single-Cell-Transcriptomics.git
 ```
 
 ## Symlink to existing output data
-```
 - Run `./mock_run.sh <script_name>`.
   - For example `./mock_run.sh 00_download.sh`
 - You would skip this if doing these analyses on your own 
@@ -75,7 +74,7 @@ GATTTGGGGTTTAAAGGGTGACCTGGTAGG
 
 ## Data Download
 - NCBI Sequence Read Archive (SRA) 
-- https://www.ncbi.nlm.nih.gov/bioproject/PRJNA600499
+- [https://www.ncbi.nlm.nih.gov/bioproject/PRJNA600499](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA600499)
 - Use SRA Toolkit to download
 - `include-technical`
   - Necessary to obtain Cell and UMI barcodes

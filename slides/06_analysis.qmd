@@ -10,7 +10,6 @@ format:
 ---
 
 
-
 ## Steps
 1. Quality control
 2. Normalization
@@ -29,6 +28,23 @@ format:
 6. Clustering
 7. Annotation 
 - Not necessarily a linear process
+
+
+## Correction of ambient RNA {.smaller}
+- RNA in the environment of the cell
+  - Can be from dead cells, lysed cells, or other sources
+- Potentially a significant source of noise in single cell RNAseq data
+- Can be corrected for using tools like `SoupX`
+  - These tools use the expression profiles of empty droplets to estimate the ambient RNA profile
+  - They then subtract this profile from the expression data of each cell
+
+![](img/droplet_ambient-biorender.png){width="200px"}
+
+
+## Doublet Detection
+- Can be filtered out using tools like the `scDblFinder` R package 
+
+![](img/doublet-biorender.png){.nostretch width="200px"}
 
 
 ## Quality Control {.smaller}
@@ -123,22 +139,6 @@ format:
     - Be careful with your conclusions
 
 
-## Doublet Detection
-- Can be filtered out using tools like the `scDblFinder` R package or `Scrublet` Python package
-
-![](img/doublet-biorender.png){.nostretch width="200px"}
-
-
-## Correction of ambient RNA {.smaller}
-- RNA in the environment of the cell
-  - Can be from dead cells, lysed cells, or other sources
-- Potentially a significant source of noise in single cell RNAseq data
-- Can be corrected for using tools like `SoupX`
-  - These tools use the expression profiles of empty droplets to estimate the ambient RNA profile
-  - They then subtract this profile from the expression data of each cell
-
-![](img/droplet_ambient-biorender.png){width="200px"}
-
 
 ## Normalization {.smaller}
 - Each step of single cell workflow introduces a degree of variablity
@@ -157,7 +157,7 @@ format:
 
 ![Cambridge Institute](img/depth_bias-cambridge_institute.png)
 
-- There is not differential expression, only a difference in sequencing depth
+- There is no differential expression, only a difference in sequencing depth
 
 
 ## Normalization {.smaller}
@@ -171,14 +171,14 @@ format:
 - Shifted logarithm
   - Works well for dimensionality reduction and differential expression
 - Scran's pooling-based size factor estimation method
-  - Works well or batch correction  
+  - Works well for batch correction  
 - Analytic Pearson residuals
 
 
 ## Feature Selection {.smaller}
 - Many genes are not informative for downstream analysis
 - We want to:
-  - Select gene that captue biologically meaningful variation 
+  - Select genes that capture biologically meaningful variation 
   - Reduce the number of genes that only contribute noise
 
 ![Luecken & Theis, 2019](img/feature_selection-luecken_theis_2019.jpeg){.nostretch width="800px"}
@@ -201,6 +201,7 @@ format:
   - Principal Component Analysis (PCA)
   - t-distributed Stochastic Neighbor Embedding (t-SNE)
   - Uniform Manifold Approximation and Projection (UMAP)
+  - Single-cell Variational Inference (scVI)
 
 
 ## Principal Component Analysis (PCA) {.smaller}
@@ -209,6 +210,14 @@ format:
 - We can select the top principal components to use for downstream analysis
 - Highly efficient and easy to interpret
 - Not ideal for visualization
+
+## Dimensionality Reduction - PCA {.smaller}
+- Common dimensionality reduction technique
+- Starting point for further dimensionality reduction methods and other downstream tasks
+- PCA creates a new set of variables called principal components (PCs)
+- A PC is a weighted combination of the original genes that captures a particular pattern of correlated variation across cells
+
+![](img/pca_figure.png){fig-align="center"}
 
 
 ## t-distributed Stochastic Neighbor Embedding (t-SNE) {.smaller}
@@ -239,6 +248,27 @@ format:
 ## Integration {.smaller}
 
 ![Luecken & Theis, 2019](img/integration-luecken_theis_2019.jpeg){width="750px"}
+
+
+## Integration - Harmony <img src="img/harmony-logo.png" style="height:2.5em; vertical-align:middle; margin-left:0.5em;">
+- Popular tool using an iterative algorithm to align data across batches
+- Identifies shared variation across batches
+- Adjusts data to remove batch effects while preserving biological variation
+- Takes PC scores as input and outputs corrected PC scores for use in downstream analyses
+
+
+## Integration - Harmony
+<br>
+<br>
+
+![](img/harmony.webp){fig-align="center"}
+
+
+## K-Nearest Neighbors
+- Many of the analyses downstream of dimensionality reduction rely on a neighborhood graph of the cells.
+- The foundation of the neighborhood graph is the K-nearest neighbors (KNN) algorithm which identifies the K closest neighbors for each cell based on a distances in the reduced dimensionality space.
+
+![](img/knn_figure.png){fig-align="center"}
 
 
 ## Clustering {.smaller}

@@ -166,6 +166,29 @@ Kerry Cobb
 <li>Not necessarily a linear process</li>
 </ul>
 </section>
+<section id="correction-of-ambient-rna" class="slide level2 smaller">
+<h2>Correction of ambient RNA</h2>
+<ul>
+<li>RNA in the environment of the cell
+<ul>
+<li>Can be from dead cells, lysed cells, or other sources</li>
+</ul></li>
+<li>Potentially a significant source of noise in single cell RNAseq data</li>
+<li>Can be corrected for using tools like <code>SoupX</code>
+<ul>
+<li>These tools use the expression profiles of empty droplets to estimate the ambient RNA profile</li>
+<li>They then subtract this profile from the expression data of each cell</li>
+</ul></li>
+</ul>
+
+<img data-src="img/droplet_ambient-biorender.png" width="200" class="r-stretch"></section>
+<section id="doublet-detection" class="slide level2">
+<h2>Doublet Detection</h2>
+<ul>
+<li>Can be filtered out using tools like the <code>scDblFinder</code> R package</li>
+</ul>
+<p><img data-src="img/doublet-biorender.png" class="" width="200"></p>
+</section>
 <section id="quality-control" class="slide level2 smaller">
 <h2>Quality Control</h2>
 <div class="columns">
@@ -288,29 +311,6 @@ Kerry Cobb
 </ul></li>
 </ul>
 </section>
-<section id="doublet-detection" class="slide level2">
-<h2>Doublet Detection</h2>
-<ul>
-<li>Can be filtered out using tools like the <code>scDblFinder</code> R package or <code>Scrublet</code> Python package</li>
-</ul>
-<p><img data-src="img/doublet-biorender.png" class="" width="200"></p>
-</section>
-<section id="correction-of-ambient-rna" class="slide level2 smaller">
-<h2>Correction of ambient RNA</h2>
-<ul>
-<li>RNA in the environment of the cell
-<ul>
-<li>Can be from dead cells, lysed cells, or other sources</li>
-</ul></li>
-<li>Potentially a significant source of noise in single cell RNAseq data</li>
-<li>Can be corrected for using tools like <code>SoupX</code>
-<ul>
-<li>These tools use the expression profiles of empty droplets to estimate the ambient RNA profile</li>
-<li>They then subtract this profile from the expression data of each cell</li>
-</ul></li>
-</ul>
-
-<img data-src="img/droplet_ambient-biorender.png" width="200" class="r-stretch"></section>
 <section id="normalization" class="slide level2 smaller">
 <h2>Normalization</h2>
 <ul>
@@ -334,7 +334,7 @@ Kerry Cobb
 </ul>
 
 <img data-src="img/depth_bias-cambridge_institute.png" class="r-stretch quarto-figure-center"><p class="caption">Cambridge Institute</p><ul>
-<li>There is not differential expression, only a difference in sequencing depth</li>
+<li>There is no differential expression, only a difference in sequencing depth</li>
 </ul>
 </section>
 <section id="normalization-1" class="slide level2 smaller">
@@ -355,7 +355,7 @@ Kerry Cobb
 </ul></li>
 <li>Scran’s pooling-based size factor estimation method
 <ul>
-<li>Works well or batch correction<br>
+<li>Works well for batch correction<br>
 </li>
 </ul></li>
 <li>Analytic Pearson residuals</li>
@@ -367,7 +367,7 @@ Kerry Cobb
 <li>Many genes are not informative for downstream analysis</li>
 <li>We want to:
 <ul>
-<li>Select gene that captue biologically meaningful variation</li>
+<li>Select genes that capture biologically meaningful variation</li>
 <li>Reduce the number of genes that only contribute noise</li>
 </ul></li>
 </ul>
@@ -404,6 +404,7 @@ Kerry Cobb
 <li>Principal Component Analysis (PCA)</li>
 <li>t-distributed Stochastic Neighbor Embedding (t-SNE)</li>
 <li>Uniform Manifold Approximation and Projection (UMAP)</li>
+<li>Single-cell Variational Inference (scVI)</li>
 </ul></li>
 </ul>
 </section>
@@ -417,6 +418,16 @@ Kerry Cobb
 <li>Not ideal for visualization</li>
 </ul>
 </section>
+<section id="dimensionality-reduction---pca" class="slide level2 smaller">
+<h2>Dimensionality Reduction - PCA</h2>
+<ul>
+<li>Common dimensionality reduction technique</li>
+<li>Starting point for further dimensionality reduction methods and other downstream tasks</li>
+<li>PCA creates a new set of variables called principal components (PCs)</li>
+<li>A PC is a weighted combination of the original genes that captures a particular pattern of correlated variation across cells</li>
+</ul>
+
+<img data-src="img/pca_figure.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="t-distributed-stochastic-neighbor-embedding-t-sne" class="slide level2 smaller">
 <h2>t-distributed Stochastic Neighbor Embedding (t-SNE)</h2>
 <ul>
@@ -455,6 +466,28 @@ Kerry Cobb
 <h2>Integration</h2>
 
 <img data-src="img/integration-luecken_theis_2019.jpeg" width="750" class="r-stretch quarto-figure-center"><p class="caption">Luecken &amp; Theis, 2019</p></section>
+<section id="integration---harmony" class="slide level2">
+<h2>Integration - Harmony <img src="img/harmony-logo.png" style="height:2.5em; vertical-align:middle; margin-left:0.5em;"></h2>
+<ul>
+<li>Popular tool using an iterative algorithm to align data across batches</li>
+<li>Identifies shared variation across batches</li>
+<li>Adjusts data to remove batch effects while preserving biological variation</li>
+<li>Takes PC scores as input and outputs corrected PC scores for use in downstream analyses</li>
+</ul>
+</section>
+<section id="integration---harmony-1" class="slide level2">
+<h2>Integration - Harmony</h2>
+<p><br> <br></p>
+
+<img data-src="img/harmony.webp" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="k-nearest-neighbors" class="slide level2">
+<h2>K-Nearest Neighbors</h2>
+<ul>
+<li>Many of the analyses downstream of dimensionality reduction rely on a neighborhood graph of the cells.</li>
+<li>The foundation of the neighborhood graph is the K-nearest neighbors (KNN) algorithm which identifies the K closest neighbors for each cell based on a distances in the reduced dimensionality space.</li>
+</ul>
+
+<img data-src="img/knn_figure.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="clustering" class="slide level2 smaller">
 <h2>Clustering</h2>
 <ul>
