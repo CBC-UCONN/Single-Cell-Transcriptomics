@@ -6,9 +6,9 @@
 
 [Data Processing](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/02_data_processing.html)
 
+### Days 2 & 3
 [Installing & Configuring Conda](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/04_conda.html)
 
-### Days 2 & 3
 [Single Cell RNA-Seq Analysis Tools](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/03_tools.html)
 
 [Single Cell RNA-Seq Analysis](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/06_analysis.html)

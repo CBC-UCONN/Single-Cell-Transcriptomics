@@ -24,20 +24,54 @@ source ~/.bashrc
 ```
 
 # Create environment
+Note the use of `mamba` instead of `conda`. Mamba is a faster drop-in replacement for conda. It is recommended to use mamba for creating environments and installing packages.
 ```
-conda create -n single-cell python=3.11
+mamba create -n single-cell python=3.11
 ```
 1. Confirm changes (y)
 
 # Activate environment
 ```
-conda activate single-cell
+mamba activate single-cell
 ```
 
 # Install dependencies
 ```
-conda install -c conda-forge -c bioconda jupyter numpy"<2" scanpy pertpy upsetplot \
-harmonypy palantir python-igraph leidenalg seaborn scipy scikit-image scikit-misc \
-rpy2 anndata2ri=1.1 r-soupx bioconda::bioconductor-scdblfinder 
+mamba install -c conda-forge -c bioconda jupyter scanpy rpy2 anndata2ri scipy python-igraph r-soupx 
+
+mamba install -c conda-forge -c bioconda bioconductor-scdblfinder upsetplot harmonypy scikit-misc
 
 ```
+
+<!-- mamba install -c conda-forge -c bioconda jupyter numpy scanpy pertpy upsetplot \
+conda install -c conda-forge -c bioconda jupyter numpy scanpy pertpy upsetplot \
+harmonypy palantir python-igraph leidenalg seaborn scipy scikit-image scikit-misc \
+rpy2 anndata2ri \
+r-soupx r-seurat \
+bioconda::bioconductor-scdblfinder bioconda::bioconductor-zellkonverter \
+bioconda::bioconductor-singlecellexperiment
+
+mamba install -c conda-forge -c bioconda jupyter numpy"<2" scanpy pertpy upsetplot \
+harmonypy palantir python-igraph leidenalg seaborn scipy scikit-image scikit-misc \
+rpy2 anndata2ri=1.1 \
+r-soupx r-seurat \
+bioconda::bioconductor-scdblfinder bioconda::bioconductor-zellkonverter \
+bioconda::bioconductor-singlecellexperiment \
+
+```
+mamba create -n single-cell -c conda-forge -c bioconda \
+  jupyter scanpy numpy"<2" scipy \
+  harmonypy palantir python-igraph leidenalg seaborn scikit-image scikit-misc \
+  rpy2 anndata2ri upsetplot pertpy\
+  r-soupx r-seurat \
+  bioconductor-scdblfinder bioconductor-zellkonverter \
+  bioconductor-singlecellexperiment
+
+
+
+mamba create -n single-cell python=3.11
+mamba activate single-cell
+mamba install -c conda-forge -c bioconda jupyter scanpy rpy2 anndata2ri scipy \ 
+  r-soupx 
+  
+mamba install -c bioconda bioconductor-scdblfinder -->
