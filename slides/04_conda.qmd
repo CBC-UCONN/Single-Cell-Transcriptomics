@@ -36,26 +36,40 @@ conda activate single-cell
 ```
 
 # Install dependencies
+
+## single-cell environment
+Install into your `single-cell` environment.
+### Dependencies for 05_filter_ambient
 ```
-# Dependencies for 05_filter_ambient
 conda install -c conda-forge -c bioconda jupyter scanpy rpy2 anndata2ri scipy \
 python-igraph r-soupx 
-
-# Addition dependencies for 06_doublet_detection & 07_qc_filtering
-conda install -c conda-forge -c bioconda bioconductor-scdblfinder upsetplot 
-
-# Additional dependencies for 08_preprocessing & 09_annotation, 10_pseudotime
-conda install -c conda-forge -c bioconda harmonypy scikit-misc palantir 
-
-# Create environment for 11_composition
-conda create -n sc-composition -c conda-forge -c bioconda python=3.11 scanpy \
-pertpy pandas matplotlib seaborn
-
-# Additional dependencies for 12_diff_exp, use single-cell environment
-conda install -c conda-forge -c bioconda decoupler-py bioconductor-deseq2 adjusttext
-
-# Additional dependencies for 13_interop, use single-cell environment
-conda install -c conda-forge -c bioconda r-seurat bioconductor-anndatar bioconductor-rhdf5 bioconductor-scater
-
 ```
 
+### Addition dependencies for 06_doublet_detection & 07_qc_filtering
+```
+conda install -c conda-forge -c bioconda bioconductor-scdblfinder upsetplot 
+```
+
+### Additional dependencies for 08_preprocessing & 09_annotation, 10_pseudotime
+```
+conda install -c conda-forge -c bioconda harmonypy scikit-misc palantir 
+```
+
+### Additional dependencies for 12_diff_exp, use single-cell environment
+```
+conda install -c conda-forge -c bioconda decoupler-py bioconductor-deseq2 adjusttext
+```
+
+### Additional dependencies for 13_interop, use single-cell environment
+```
+conda install -c conda-forge -c bioconda r-seurat bioconductor-anndatar \
+bioconductor-rhdf5 bioconductor-scater
+```
+
+## Create environment for 11_composition
+Dependencies for the 11_composition script conflict with the single-cell environment. 
+Therefore, we need to create a new environment for this script.
+```
+conda create -n sc-composition -c conda-forge -c bioconda python=3.11 scanpy \
+pertpy pandas matplotlib seaborn
+```

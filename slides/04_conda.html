@@ -114,26 +114,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="install-dependencies" class="level1">
 <h1>Install dependencies</h1>
-<pre><code># Dependencies for 05_filter_ambient
-conda install -c conda-forge -c bioconda jupyter scanpy rpy2 anndata2ri scipy \
-python-igraph r-soupx 
-
-# Addition dependencies for 06_doublet_detection &amp; 07_qc_filtering
-conda install -c conda-forge -c bioconda bioconductor-scdblfinder upsetplot 
-
-# Additional dependencies for 08_preprocessing &amp; 09_annotation, 10_pseudotime
-conda install -c conda-forge -c bioconda harmonypy scikit-misc palantir 
-
-# Create environment for 11_composition
-conda create -n sc-composition -c conda-forge -c bioconda python=3.11 scanpy \
-pertpy pandas matplotlib seaborn
-
-# Additional dependencies for 12_diff_exp, use single-cell environment
-conda install -c conda-forge -c bioconda decoupler-py bioconductor-deseq2 adjusttext
-
-# Additional dependencies for 13_interop, use single-cell environment
-conda install -c conda-forge -c bioconda r-seurat bioconductor-anndatar bioconductor-rhdf5 bioconductor-scater
-</code></pre>
+<section id="single-cell-environment" class="level2">
+<h2 class="anchored" data-anchor-id="single-cell-environment">single-cell environment</h2>
+<p>Install into your <code>single-cell</code> environment. ### Dependencies for 05_filter_ambient</p>
+<pre><code>conda install -c conda-forge -c bioconda jupyter scanpy rpy2 anndata2ri scipy \
+python-igraph r-soupx </code></pre>
+<section id="addition-dependencies-for-06_doublet_detection-07_qc_filtering" class="level3">
+<h3 class="anchored" data-anchor-id="addition-dependencies-for-06_doublet_detection-07_qc_filtering">Addition dependencies for 06_doublet_detection &amp; 07_qc_filtering</h3>
+<pre><code>conda install -c conda-forge -c bioconda bioconductor-scdblfinder upsetplot </code></pre>
+</section>
+<section id="additional-dependencies-for-08_preprocessing-09_annotation-10_pseudotime" class="level3">
+<h3 class="anchored" data-anchor-id="additional-dependencies-for-08_preprocessing-09_annotation-10_pseudotime">Additional dependencies for 08_preprocessing &amp; 09_annotation, 10_pseudotime</h3>
+<pre><code>conda install -c conda-forge -c bioconda harmonypy scikit-misc palantir </code></pre>
+</section>
+<section id="additional-dependencies-for-12_diff_exp-use-single-cell-environment" class="level3">
+<h3 class="anchored" data-anchor-id="additional-dependencies-for-12_diff_exp-use-single-cell-environment">Additional dependencies for 12_diff_exp, use single-cell environment</h3>
+<pre><code>conda install -c conda-forge -c bioconda decoupler-py bioconductor-deseq2 adjusttext</code></pre>
+</section>
+<section id="additional-dependencies-for-13_interop-use-single-cell-environment" class="level3">
+<h3 class="anchored" data-anchor-id="additional-dependencies-for-13_interop-use-single-cell-environment">Additional dependencies for 13_interop, use single-cell environment</h3>
+<pre><code>conda install -c conda-forge -c bioconda r-seurat bioconductor-anndatar \
+bioconductor-rhdf5 bioconductor-scater</code></pre>
+</section>
+</section>
+<section id="create-environment-for-11_composition" class="level2">
+<h2 class="anchored" data-anchor-id="create-environment-for-11_composition">Create environment for 11_composition</h2>
+<p>Dependencies for the 11_composition script conflict with the single-cell environment. Therefore, we need to create a new environment for this script.</p>
+<pre><code>conda create -n sc-composition -c conda-forge -c bioconda python=3.11 scanpy \
+pertpy pandas matplotlib seaborn</code></pre>
+</section>
 </section>
 
 </main>
