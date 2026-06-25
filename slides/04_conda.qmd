@@ -44,10 +44,14 @@ python-igraph r-soupx
 # Addition dependencies for 06_doublet_detection & 07_qc_filtering
 conda install -c conda-forge -c bioconda bioconductor-scdblfinder upsetplot 
 
-# Additional dependencies for 08_preprocessing & 09_annotation, 10_pseudotime, 11_composition
-conda install -c conda-forge -c bioconda harmonypy scikit-misc palantir pertpy
+# Additional dependencies for 08_preprocessing & 09_annotation, 10_pseudotime
+conda install -c conda-forge -c bioconda harmonypy scikit-misc palantir 
 
-# Additional dependencies for 12_diff_exp
+# Create environment for 11_composition
+conda create -n sc-composition -c conda-forge -c bioconda python=3.11 scanpy \
+pertpy pandas matplotlib seaborn
+
+# Additional dependencies for 12_diff_exp, use single-cell environment
 conda install -c conda-forge -c bioconda decoupler-py bioconductor-deseq2 adjusttext
 
 # Additional dependencies for 13_interop, use single-cell environment
