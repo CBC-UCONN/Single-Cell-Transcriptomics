@@ -36,9 +36,9 @@ conda activate single-cell
 ```
 
 # Install dependencies
-
 ## single-cell environment
-Install into your `single-cell` environment.
+Installing dependencies into your `single-cell` environment.
+
 ### Dependencies for 05_filter_ambient
 ```
 conda install -c conda-forge -c bioconda jupyter scanpy rpy2 anndata2ri scipy \
