@@ -37,10 +37,21 @@ conda activate single-cell
 
 # Install dependencies
 ```
-conda install -c conda-forge -c bioconda jupyter scanpy rpy2 anndata2ri scipy python-igraph r-soupx 
+# Dependencies for 05_filter_ambient
+conda install -c conda-forge -c bioconda jupyter scanpy rpy2 anndata2ri scipy \
+python-igraph r-soupx 
 
+# Addition dependencies for 06_doublet_detection & 07_qc_filtering
 conda install -c conda-forge -c bioconda bioconductor-scdblfinder upsetplot 
 
-conda install -c conda-forge -c bioconda harmonypy scikit-misc
+# Additional dependencies for 08_preprocessing & 09_annotation, 10_pseudotime, 11_composition
+conda install -c conda-forge -c bioconda harmonypy scikit-misc palantir pertpy
+
+# Additional dependencies for 12_diff_exp
+conda install -c conda-forge -c bioconda decoupler-py bioconductor-deseq2 adjusttext
+
+# Additional dependencies for 13_interop, use single-cell environment
+conda install -c conda-forge -c bioconda r-seurat bioconductor-anndatar bioconductor-rhdf5 bioconductor-scater
 
 ```
+
