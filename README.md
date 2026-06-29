@@ -14,25 +14,19 @@
 [Single Cell RNA-Seq Analysis](https://CBC-UCONN.github.io/Single-Cell-Transcriptomics/slides/06_analysis.html)
 
 
-<!-- ## Getting Workshop Code
-Code for the workshop can be downloaded from https://github.com/CBC-UCONN/Single-Cell-Transcriptomics/releases.
+## Getting Workshop Code
+Code for a specific workshop can be downloaded from https://github.com/CBC-UCONN/Single-Cell-Transcriptomics/releases.
 
 Copy the url for the version you wish to download and use `wget` or `curl` to download it.
 
-To download the most recent version:
+For example:
 
 ```bash
-wget https://github.com/CBC-UCONN/Single-Cell-Transcriptomics/archive/refs/tags/2025.06.zip
+wget https://github.com/CBC-UCONN/Single-Cell-Transcriptomics/archive/refs/tags/2026.06.zip
 ```
 One downloaded, unzip the file:
 
 ```bash
-unzip 2025.06.zip
-```  -->
+unzip 2026.06.zip
+```
 
-<!-- If you do not wish to run the entire pipeline (scripts 01-05), you will need to create symlinks to the pre-existing results files.
-
-Within the Single-Cell-Transcriptomics directory, run the following commands to create the necessary symlinks:
-```bash 
-ln -s /core/cbc/tutorials/workshopdirs/Single-Cell-Transcriptomics/leukemia/results/ leukemia/results -->
-<!-- ``` -->
