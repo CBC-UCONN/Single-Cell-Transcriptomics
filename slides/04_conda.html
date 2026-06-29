@@ -143,8 +143,16 @@ bioconductor-rhdf5 bioconductor-scater</code></pre>
 <section id="create-environment-for-11_composition" class="level2">
 <h2 class="anchored" data-anchor-id="create-environment-for-11_composition">Create environment for 11_composition</h2>
 <p>Dependencies for the 11_composition script conflict with the single-cell environment. Therefore, we need to create a new environment for this script.</p>
-<pre><code>conda create -n sc-composition -c conda-forge -c bioconda python=3.11 scanpy \
+<pre><code>conda create -n sc-composition -c conda-forge -c bioconda python=3.11 jupyter scanpy \
 pertpy pandas matplotlib seaborn</code></pre>
+</section>
+<section id="one-line-to-create-single-cell-environment" class="level2">
+<h2 class="anchored" data-anchor-id="one-line-to-create-single-cell-environment">One line to create single-cell environment</h2>
+<p>If you are not in a hurry, you can create the single-cell environment with all dependencies in one line. This will take a while to resolve and install all dependencies.</p>
+<pre><code>conda install -c conda-forge -c bioconda jupyter scanpy rpy2 anndata2ri scipy \
+python-igraph r-soupx bioconductor-scdblfinder upsetplot harmonypy scikit-misc \
+palantir decoupler-py bioconductor-deseq2 adjusttext r-seurat bioconductor-anndatar \
+bioconductor-rhdf5 bioconductor-scater</code></pre>
 </section>
 </section>
 
